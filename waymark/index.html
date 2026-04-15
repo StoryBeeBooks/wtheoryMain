@@ -1559,24 +1559,18 @@ button { cursor: pointer; font-family: inherit; border: none; }
   <div class="container">
     <div class="trust__inner">
       <p class="trust__label">WHY PROFESSIONALS CHOOSE WAYMARK</p>
-      <div class="trust__badges">
-        <div class="trust__badge">
+      <div class="trust__badges" style="flex-wrap: nowrap; justify-content: center;">
+        <div class="trust__badge" style="flex: 1; justify-content: center; text-align: center;">
           No Subscriptions
         </div>
-        <div class="trust__badge">
+        <div class="trust__badge" style="flex: 1; justify-content: center; text-align: center;">
           100% On-Device Storage
         </div>
-        <div class="trust__badge">
+        <div class="trust__badge" style="flex: 1; justify-content: center; text-align: center;">
           15 Languages
         </div>
-        <div class="trust__badge">
-          Zero Third-Party Code
-        </div>
-        <div class="trust__badge">
+        <div class="trust__badge" style="flex: 1; justify-content: center; text-align: center;">
           Apple Pencil Ready
-        </div>
-        <div class="trust__badge">
-          Free to Start
         </div>
       </div>
     </div>
@@ -1889,32 +1883,6 @@ button { cursor: pointer; font-family: inherit; border: none; }
 </section>
 
 <!-- ============================================================
-     STATS BAR
-     ============================================================ -->
-<section class="stats">
-  <div class="container">
-    <div class="stats__grid">
-      <div>
-        <div class="stat__number">15</div>
-        <div class="stat__label">Transcription Languages</div>
-      </div>
-      <div>
-        <div class="stat__number">13</div>
-        <div class="stat__label">Translation Languages</div>
-      </div>
-      <div>
-        <div class="stat__number">0</div>
-        <div class="stat__label">Third-Party Dependencies</div>
-      </div>
-      <div>
-        <div class="stat__number">3</div>
-        <div class="stat__label">App Interface Languages</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
      HOW IT WORKS
      ============================================================ -->
 <section class="section" id="how-it-works">
@@ -1944,37 +1912,6 @@ button { cursor: pointer; font-family: inherit; border: none; }
         <div class="step__number">4</div>
         <h3 class="step__title">Export &amp; Share</h3>
         <p class="step__desc">Generate a professionally styled PDF choosing exactly which sections to include, then share it via AirDrop, email, or save to Files.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     SESSION VIEW DEEP DIVE
-     ============================================================ -->
-<section class="section section--alt">
-  <div class="container">
-    <div class="section__header">
-      <span class="label">The Session Experience</span>
-      <h2 class="heading-xl">A workspace designed<br>for focus.</h2>
-      <p class="text-lg">Waymark's two-column session view puts everything you need within reach — transcript, translation, notes, drawing, camera, and AI — without ever leaving the screen.</p>
-    </div>
-    <div class="image-placeholder image-placeholder--wide" style="max-width: 1000px; margin: 0 auto;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="12" y1="3" x2="12" y2="17"/></svg>
-      Split-Screen Session View (Full Width) Placeholder
-    </div>
-    <div class="metric-callouts">
-      <div class="metric-callout">
-        <div class="metric-callout__value">40+</div>
-        <div class="metric-callout__label">Minutes of continuous recording</div>
-      </div>
-      <div class="metric-callout">
-        <div class="metric-callout__value">5</div>
-        <div class="metric-callout__label">Photos per AI analysis</div>
-      </div>
-      <div class="metric-callout">
-        <div class="metric-callout__value">4,000</div>
-        <div class="metric-callout__label">Words of notes per analysis</div>
       </div>
     </div>
   </div>
@@ -2126,58 +2063,43 @@ button { cursor: pointer; font-family: inherit; border: none; }
     <div class="section__header">
       <span class="label">Security &amp; Privacy</span>
       <h2 class="heading-xl">Your data stays yours.<br>No exceptions.</h2>
-      <p class="text-lg">Waymark was built with a privacy-first architecture. Your session content — transcripts, notes, drawings, photos, and AI reports — is stored exclusively on your iPad. We never store your content on our servers.</p>
+      <p class="text-lg">Everything you record, write, draw, and photograph in Waymark is stored only on your iPad. We never see your content, never store it on our servers, and never share it with anyone.</p>
     </div>
     <div class="security-grid">
       <div class="security-card">
         
-        <h3 class="security-card__title">On-Device Storage</h3>
-        <p class="security-card__desc">All session data is stored locally on your iPad using Apple's SwiftData. We cannot access, read, or recover your content. You own it entirely.</p>
+        <h3 class="security-card__title">Your Content Never Leaves Your iPad</h3>
+        <p class="security-card__desc">Transcripts, notes, drawings, photos, and reports are saved directly to your device. No cloud sync, no server copies. If you delete it, it's gone.</p>
       </div>
       <div class="security-card">
         
-        <h3 class="security-card__title">App Attest</h3>
-        <p class="security-card__desc">Every API request from Waymark is cryptographically signed using Apple's App Attest, preventing unauthorized access from outside the genuine app.</p>
+        <h3 class="security-card__title">Audio Is Never Recorded</h3>
+        <p class="security-card__desc">Your voice is processed in real time and immediately discarded. No audio file is ever created, stored, or accessible to us or any third party.</p>
       </div>
       <div class="security-card">
         
-        <h3 class="security-card__title">Keychain Security</h3>
-        <p class="security-card__desc">Authentication tokens are stored in the iOS Keychain — hardware-encrypted and inaccessible to other apps. Survives app reinstalls.</p>
+        <h3 class="security-card__title">You Control When Data Is Shared</h3>
+        <p class="security-card__desc">Nothing is sent to the cloud unless you choose to. Transcription, translation, and analysis only happen when you tap the button. You decide what gets processed and when.</p>
       </div>
       <div class="security-card">
         
-        <h3 class="security-card__title">TLS Encryption</h3>
-        <p class="security-card__desc">All communication between the app and servers uses HTTPS with TLS encryption. No secret API keys are stored in the app binary — all keys are server-side.</p>
+        <h3 class="security-card__title">No Tracking, No Ads, No Third Parties</h3>
+        <p class="security-card__desc">Waymark contains zero third-party SDKs, analytics trackers, or advertising code. The app is built entirely with Apple's own frameworks. Your usage data stays private.</p>
       </div>
       <div class="security-card">
         
-        <h3 class="security-card__title">No Audio Stored</h3>
-        <p class="security-card__desc">Audio is streamed in real time for transcription and is never stored — not on our servers, not by the provider. We never have access to your raw audio.</p>
+        <h3 class="security-card__title">Sign In Securely with Apple</h3>
+        <p class="security-card__desc">Your account is protected by Apple's identity system. We never see your password, and you can use a private relay email so your real address stays hidden.</p>
       </div>
       <div class="security-card">
         
-        <h3 class="security-card__title">Rate Limiting &amp; Anomaly Detection</h3>
-        <p class="security-card__desc">Per-user, per-endpoint rate limiting and automated anomaly detection prevents abuse and protects every user's experience.</p>
-      </div>
-      <div class="security-card">
-        
-        <h3 class="security-card__title">Sign in with Apple</h3>
-        <p class="security-card__desc">Authenticate securely via Apple's identity system. Your Apple ID credentials are never shared with us. You can even use a private relay email.</p>
-      </div>
-      <div class="security-card">
-        
-        <h3 class="security-card__title">Row-Level Security</h3>
-        <p class="security-card__desc">Server-side data is protected by row-level security policies and encrypted at rest. Balance operations use atomic transactions to prevent race conditions.</p>
-      </div>
-      <div class="security-card">
-        
-        <h3 class="security-card__title">Full Account Deletion</h3>
-        <p class="security-card__desc">Delete your account from Settings at any time. All server-side data is permanently and immediately removed — authentication, balances, usage logs, everything.</p>
+        <h3 class="security-card__title">Delete Everything, Anytime</h3>
+        <p class="security-card__desc">Delete your account from Settings and all server-side data is permanently removed on the spot. No waiting period, no hidden backups, no questions asked.</p>
       </div>
     </div>
 
     <div style="max-width: 600px; margin: 64px auto 0; text-align: center;">
-      <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7;">We do not sell, rent, or share your personal information with third parties for advertising or marketing purposes. We have zero third-party dependencies in our app binary — it's 100% Apple-native Swift.</p>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7;">We do not sell, rent, or share your personal information with third parties for any purpose. Your content belongs to you.</p>
       <div style="margin-top: 24px;">
         <a href="/waymark-privacy-policy" class="btn btn--sm" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);">Read Privacy Policy</a>
       </div>
