@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waymark — Record, Transcribe, Analyze</title>
+<meta name="description" content="Waymark is an iPadOS productivity app for seminars, lectures, and meetings. Live transcription, real-time translation, AI-powered analysis, and PDF export — all in one app.">
+<link rel="stylesheet" href="/css/style.css">
+<style>
+/* ============================================================
+   RESET & FOUNDATIONS
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --color-bg: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F5F5F7;
+  --color-text: #1D1D1F;
+  --color-text-secondary: #6E6E73;
+  --color-text-tertiary: #86868B;
+  --color-accent: #0071E3;
+  --color-accent-hover: #0077ED;
+  --color-accent-light: #E8F1FC;
+  --color-accent-gradient: linear-gradient(135deg, #0071E3 0%, #2997FF 100%);
+  --color-dark: #1D1D1F;
+  --color-dark-surface: #161617;
+  --color-dark-surface-alt: #2C2C2E;
+  --color-border: #D2D2D7;
+  --color-border-light: #E8E8ED;
+  --color-success: #30D158;
+  --color-warm: #FF9F0A;
+  --color-purple: #BF5AF2;
+  --color-pink: #FF375F;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.08), 0 2px 10px rgba(0,0,0,0.04);
+  --shadow-xl: 0 20px 60px rgba(0,0,0,0.1), 0 4px 20px rgba(0,0,0,0.06);
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --max-width: 1200px;
+  --max-width-narrow: 800px;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { cursor: pointer; font-family: inherit; border: none; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.container--narrow {
+  max-width: var(--max-width-narrow);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.heading-hero {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+.heading-xl {
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.heading-lg {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.heading-md {
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.heading-sm {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.text-lg {
+  font-size: clamp(17px, 1.5vw, 21px);
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.text-base {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.text-sm {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-tertiary);
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 980px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: #fff;
+}
+.btn--primary:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-accent);
+  border: 1.5px solid var(--color-accent);
+}
+.btn--secondary:hover {
+  background: var(--color-accent-light);
+}
+
+.btn--dark {
+  background: var(--color-dark);
+  color: #fff;
+}
+.btn--dark:hover {
+  background: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+  padding: 10px 16px;
+}
+.btn--ghost:hover { color: var(--color-accent); }
+
+.btn--sm {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.btn--lg {
+  padding: 18px 36px;
+  font-size: 18px;
+}
+
+/* ============================================================
+   NAVIGATION (Floating Pill — Craft.do style)
+   ============================================================ */
+.nav {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(210, 210, 215, 0.45);
+  border-radius: 980px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  transition: all var(--transition-base);
+}
+
+.nav__inner {
+  padding: 0 6px 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 48px;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.nav__logo-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+
+.nav__links a {
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-radius: 980px;
+  transition: all var(--transition-fast);
+}
+
+.nav__links a:hover {
+  color: var(--color-text);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.nav__cta {
+  display: flex;
+  align-items: center;
+  margin-left: 6px;
+}
+
+.nav__cta .btn--primary.btn--sm {
+  padding: 8px 18px;
+  font-size: 13px;
+}
+
+.nav__mobile-toggle {
+  display: none;
+  background: none;
+  padding: 8px;
+  color: var(--color-text);
+}
+
+@media (max-width: 900px) {
+  .nav__links li:nth-child(n+5) { display: none; }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    left: 16px;
+    right: 16px;
+    transform: none;
+    border-radius: 980px;
+  }
+  .nav__links { display: none; }
+  .nav__mobile-toggle { display: flex; }
+  .nav__cta .btn--secondary { display: none; }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  padding: 140px 0 80px;
+  text-align: center;
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--color-bg) 100%);
+  overflow: hidden;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 6px 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 980px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero__badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-success);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.hero__title {
+  max-width: 900px;
+  margin: 0 auto 20px;
+}
+
+.hero__title-accent {
+  background: var(--color-accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__subtitle {
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.hero__note {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 60px;
+}
+
+.hero__visual {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero__image-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(145deg, #E8E8ED 0%, #D8D8DD 100%);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--color-text-tertiary);
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--color-border-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__image-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,113,227,0.03) 0%, rgba(191,90,242,0.03) 100%);
+}
+
+.hero__image-placeholder svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.4;
+}
+
+/* ============================================================
+   TRUST BAR
+   ============================================================ */
+.trust {
+  padding: 60px 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.trust__inner {
+  text-align: center;
+}
+
+.trust__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.04em;
+  margin-bottom: 24px;
+}
+
+.trust__badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.trust__badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  padding: 8px 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 980px;
+}
+
+/* ============================================================
+   SECTION UTILITIES
+   ============================================================ */
+.section {
+  padding: 100px 0;
+}
+
+.section--alt {
+  background: var(--color-surface-alt);
+}
+
+.section--dark {
+  background: var(--color-dark);
+  color: #fff;
+}
+
+.section--dark .heading-xl,
+.section--dark .heading-lg,
+.section--dark .heading-md,
+.section--dark .heading-sm {
+  color: #fff;
+}
+
+.section--dark .text-lg,
+.section--dark .text-base {
+  color: rgba(255,255,255,0.7);
+}
+
+.section--dark .label {
+  color: #64D2FF;
+}
+
+.section__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 64px;
+}
+
+.section__header .label {
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section__header .heading-xl {
+  margin-bottom: 16px;
+}
+
+.section__header .text-lg {
+  margin-top: 16px;
+}
+
+/* ============================================================
+   FEATURES GRID (Overview)
+   ============================================================ */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+
+.feature-card__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.feature-card__icon--blue { background: #E3F0FF; color: #0071E3; }
+.feature-card__icon--green { background: #E3F9ED; color: #30D158; }
+.feature-card__icon--purple { background: #F0E5FC; color: #BF5AF2; }
+.feature-card__icon--orange { background: #FFF0DD; color: #FF9F0A; }
+.feature-card__icon--pink { background: #FFE5EA; color: #FF375F; }
+.feature-card__icon--teal { background: #E0F7FA; color: #00ACC1; }
+
+.feature-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.feature-card__desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 900px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   FEATURE DEEP-DIVE (Alternating)
+   ============================================================ */
+.feature-deep {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.feature-deep--reverse {
+  direction: rtl;
+}
+.feature-deep--reverse > * {
+  direction: ltr;
+}
+
+.feature-deep__content {
+  max-width: 520px;
+}
+
+.feature-deep__content .label {
+  margin-bottom: 16px;
+  display: block;
+}
+
+.feature-deep__content .heading-lg {
+  margin-bottom: 16px;
+}
+
+.feature-deep__content .text-lg {
+  margin-bottom: 32px;
+}
+
+.feature-deep__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.feature-deep__list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text-secondary);
+}
+
+.feature-deep__list-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  margin-top: 1px;
+}
+
+.feature-deep__visual {
+  width: 100%;
+}
+
+.image-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: linear-gradient(145deg, #E8E8ED 0%, #D8D8DD 100%);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-md);
+}
+
+.image-placeholder--tall {
+  aspect-ratio: 3 / 4;
+}
+
+.image-placeholder--wide {
+  aspect-ratio: 16 / 9;
+}
+
+.image-placeholder svg {
+  width: 36px;
+  height: 36px;
+  opacity: 0.35;
+}
+
+@media (max-width: 900px) {
+  .feature-deep {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .feature-deep--reverse {
+    direction: ltr;
+  }
+}
+
+/* ============================================================
+   STATS BAR
+   ============================================================ */
+.stats {
+  padding: 80px 0;
+  background: var(--color-dark);
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+.stat__number {
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.stat__label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+/* ============================================================
+   HOW IT WORKS (Steps)
+   ============================================================ */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  counter-reset: step;
+}
+
+.step {
+  text-align: center;
+  padding: 8px;
+}
+
+.step__number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-accent-gradient);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 16px rgba(0, 113, 227, 0.25);
+}
+
+.step__title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.step__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.step__connector {
+  display: none; /* TODO: SVG connector line between steps */
+}
+
+@media (max-width: 768px) {
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ============================================================
+   USE CASES
+   ============================================================ */
+.use-cases {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.use-case {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.use-case:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.use-case__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(145deg, #E8E8ED 0%, #D8D8DD 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.use-case__content {
+  padding: 28px 28px 32px;
+}
+
+.use-case__tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 980px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.use-case__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.use-case__desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 700px) {
+  .use-cases {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   LANGUAGES
+   ============================================================ */
+.languages-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.lang-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: 980px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.lang-pill:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+}
+
+.lang-pill__flag {
+  font-size: 20px;
+}
+
+/* ============================================================
+   SECURITY SECTION
+   ============================================================ */
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.security-card {
+  background: var(--color-dark-surface-alt);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.security-card__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 113, 227, 0.15);
+  color: #64D2FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+
+.security-card__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.security-card__desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+}
+
+@media (max-width: 900px) {
+  .security-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .security-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   PRICING
+   ============================================================ */
+.pricing-intro {
+  max-width: 680px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.pricing-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #E3F9ED 0%, #E8F1FC 100%);
+  border-radius: 980px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  border: 1px solid var(--color-border-light);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.pricing-card {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-2xl);
+  padding: 36px 32px;
+  text-align: center;
+  transition: all var(--transition-smooth);
+  position: relative;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pricing-card--featured {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-md);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 16px;
+  background: var(--color-accent-gradient);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 980px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricing-card__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+
+.pricing-card__icon--blue { background: #E3F0FF; }
+.pricing-card__icon--green { background: #E3F9ED; }
+.pricing-card__icon--purple { background: #F0E5FC; }
+
+.pricing-card__name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+
+.pricing-card__amount {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: 20px;
+}
+
+.pricing-card__price {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.pricing-card__price-note {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+  margin-bottom: 24px;
+}
+
+.pricing-card__features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 28px;
+}
+
+.pricing-card__features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  padding: 6px 0;
+}
+
+.pricing-card__features li::before {
+  content: '✓';
+  color: var(--color-success);
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 18px;
+}
+
+@media (max-width: 800px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+/* ============================================================
+   COMPARISON TABLE
+   ============================================================ */
+.comparison {
+  margin-top: 64px;
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.comparison__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.comparison__table th,
+.comparison__table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.comparison__table th {
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+}
+
+.comparison__table td {
+  color: var(--color-text-secondary);
+}
+
+.comparison__table td:nth-child(2),
+.comparison__table td:nth-child(3) {
+  text-align: center;
+}
+
+.comparison__table th:nth-child(2),
+.comparison__table th:nth-child(3) {
+  text-align: center;
+}
+
+.check { color: var(--color-success); font-size: 18px; }
+.cross { color: var(--color-text-tertiary); font-size: 18px; }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq-list {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+}
+
+.faq-item details {
+  padding: 0;
+}
+
+.faq-item summary {
+  padding: 20px 0;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item summary::after {
+  content: '+';
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+  min-width: 24px;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.faq-item details[open] summary::after {
+  content: '−';
+  color: var(--color-accent);
+}
+
+.faq-item details[open] summary {
+  color: var(--color-accent);
+}
+
+.faq-answer {
+  padding: 0 0 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.faq-answer p { margin-bottom: 12px; }
+.faq-answer p:last-child { margin-bottom: 0; }
+.faq-answer ul { padding-left: 20px; margin: 8px 0; }
+.faq-answer li { margin-bottom: 4px; }
+
+/* ============================================================
+   CTA BANNER (Final)
+   ============================================================ */
+.cta-banner {
+  padding: 120px 0;
+  text-align: center;
+  background: linear-gradient(180deg, var(--color-bg) 0%, #E8F1FC 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,113,227,0.06) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cta-banner .heading-xl {
+  margin-bottom: 16px;
+}
+
+.cta-banner .text-lg {
+  max-width: 540px;
+  margin: 0 auto 40px;
+}
+
+.cta-banner__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ============================================================
+   DASHBOARD SHOWCASE
+   ============================================================ */
+.dashboard-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.dashboard-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  transition: all var(--transition-smooth);
+}
+
+.dashboard-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard-card--wide {
+  grid-column: span 2;
+}
+
+.dashboard-card__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 6px;
+}
+
+.dashboard-card__desc {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.dashboard-card__visual {
+  margin-top: 20px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(145deg, #E8E8ED 0%, #D8D8DD 100%);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-tertiary);
+}
+
+@media (max-width: 700px) {
+  .dashboard-showcase {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-card--wide {
+    grid-column: span 1;
+  }
+}
+
+/* ============================================================
+   TESTIMONIAL
+   ============================================================ */
+.testimonial-card {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 48px 40px;
+  background: var(--color-surface);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-md);
+}
+
+.testimonial-card__stars {
+  font-size: 20px;
+  color: #FFD60A;
+  margin-bottom: 20px;
+  letter-spacing: 4px;
+}
+
+.testimonial-card__quote {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text);
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.testimonial-card__author {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.testimonial-card__role {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   INLINE METRIC CALLOUT
+   ============================================================ */
+.metric-callouts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.metric-callout {
+  text-align: center;
+  padding: 32px 20px;
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border-light);
+}
+
+.metric-callout__value {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+}
+
+.metric-callout__label {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .metric-callouts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   VIDEO PLACEHOLDER
+   ============================================================ */
+.video-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(145deg, #222 0%, #1a1a1c 100%);
+  border-radius: var(--radius-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.video-placeholder__play {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  border: 2px solid rgba(255,255,255,0.2);
+}
+
+.video-placeholder:hover .video-placeholder__play {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+}
+
+.video-placeholder__play svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+  margin-left: 3px;
+}
+
+.video-placeholder__label {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ============================================================
+   DETAIL TABS
+   ============================================================ */
+.detail-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+.detail-tab {
+  padding: 10px 24px;
+  border-radius: 980px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+  cursor: default;
+}
+
+.detail-tab--active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* ============================================================
+   APPLE PENCIL BANNER
+   ============================================================ */
+.pencil-banner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: linear-gradient(135deg, #1D1D1F 0%, #2C2C2E 100%);
+  border-radius: var(--radius-2xl);
+  padding: 48px;
+  color: #fff;
+}
+
+.pencil-banner__content {
+  flex: 1;
+}
+
+.pencil-banner__content h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.pencil-banner__content p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+.pencil-banner__visual {
+  flex-shrink: 0;
+  width: 280px;
+  height: 200px;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: rgba(255,255,255,0.3);
+}
+
+@media (max-width: 768px) {
+  .pencil-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 28px;
+  }
+  .pencil-banner__visual {
+    width: 100%;
+    height: 160px;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE GLOBAL
+   ============================================================ */
+@media (max-width: 768px) {
+  .section {
+    padding: 72px 0;
+  }
+  .section__header {
+    margin-bottom: 48px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="/waymark" class="nav__logo">
+      <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/icon-ios-1024x1024.png" alt="Waymark" width="32" height="32" class="nav__logo-icon">
+      Waymark
+    </a>
+    <ul class="nav__links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#use-cases">Use Cases</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav__cta">
+      <a href="http://apps.apple.com/app/id6760979716" class="btn btn--primary btn--sm">Download on iPad</a>
+    </div>
+    <button class="nav__mobile-toggle" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__badge">
+      <span class="hero__badge-dot"></span>
+      Designed exclusively for iPad
+    </div>
+    <h1 class="heading-hero hero__title">
+      Record. Transcribe.<br><span class="hero__title-accent">Analyze.</span>
+    </h1>
+    <p class="text-lg hero__subtitle">
+      Waymark is the all-in-one iPadOS productivity app that captures spoken content in real time, translates it across languages, and turns it into actionable intelligence — all from your iPad.
+    </p>
+    <div class="hero__actions">
+      <a href="http://apps.apple.com/app/id6760979716" class="btn btn--primary btn--lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download for iPad
+      </a>
+      <a href="#features" class="btn btn--secondary btn--lg">Explore Features</a>
+    </div>
+    <p class="hero__note">iPadOS 17.0+ required &nbsp;·&nbsp; No subscriptions &nbsp;·&nbsp; Free to start</p>
+  </div>
+  <div class="hero__visual">
+    <div class="hero__image-placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      App Screenshot / Hero Image Placeholder
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST BAR
+     ============================================================ -->
+<section class="trust">
+  <div class="container">
+    <div class="trust__inner">
+      <p class="trust__label">BUILT WITH APPLE-NATIVE TECHNOLOGIES</p>
+      <div class="trust__badges">
+        <div class="trust__badge">
+          Sign in with Apple
+        </div>
+        <div class="trust__badge">
+          Apple Pencil
+        </div>
+        <div class="trust__badge">
+          App Attest
+        </div>
+        <div class="trust__badge">
+          StoreKit 2
+        </div>
+        <div class="trust__badge">
+          SwiftData
+        </div>
+        <div class="trust__badge">
+          Push Notifications
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIDEO OVERVIEW
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">See Waymark in Action</span>
+      <h2 class="heading-xl">One app. Every spoken word<br>captured and understood.</h2>
+      <p class="text-lg">Watch how Waymark transforms any seminar, lecture, or meeting into a complete, searchable, and analyzed record.</p>
+    </div>
+    <div class="video-placeholder">
+      <div class="video-placeholder__play">
+        <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+      </div>
+      <span class="video-placeholder__label">Product Demo Video Placeholder</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURES OVERVIEW GRID
+     ============================================================ -->
+<section class="section section--alt" id="features">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">Features</span>
+      <h2 class="heading-xl">Everything you need to capture,<br>understand, and share.</h2>
+      <p class="text-lg">Six powerful capabilities, seamlessly integrated into one beautifully designed iPad experience.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--blue">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <h3 class="feature-card__title">Live Transcription</h3>
+        <p class="feature-card__desc">AI-powered speech-to-text that converts spoken words to text in real time, supporting 15 languages with professional-grade accuracy.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </div>
+        <h3 class="feature-card__title">Real-Time Translation</h3>
+        <p class="feature-card__desc">Instantly translate transcribed text into 13 languages as the speaker talks. Break every language barrier, sentence by sentence.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--purple">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3 class="feature-card__title">Intelligence Consultant</h3>
+        <p class="feature-card__desc">AI-powered post-session analysis that summarizes key points, identifies action items, and generates comprehensive reports from your content.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--orange">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h3 class="feature-card__title">Rich Note-Taking</h3>
+        <p class="feature-card__desc">A powerful notes editor with inline images, freehand drawing, and annotation — all right alongside your live transcript.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--pink">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <h3 class="feature-card__title">Camera &amp; Annotation</h3>
+        <p class="feature-card__desc">Snap photos of slides, whiteboards, or documents during a session. Annotate with Apple Pencil and include them in your AI analysis.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon feature-card__icon--teal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3 class="feature-card__title">PDF Export</h3>
+        <p class="feature-card__desc">Export beautifully styled PDF reports with your transcript, translations, notes, photos, and AI analysis — ready to share anywhere.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE DEEP-DIVE #1: LIVE TRANSCRIPTION
+     ============================================================ -->
+<section class="section" id="transcription">
+  <div class="container">
+    <div class="feature-deep">
+      <div class="feature-deep__content">
+        <span class="label">Live Transcription</span>
+        <h2 class="heading-lg">Every word, captured<br>as it's spoken.</h2>
+        <p class="text-lg">Waymark streams audio from your iPad's microphone to an AI-powered speech engine in real time. Words appear on screen as fast as they're spoken — no waiting, no manual effort.</p>
+        <ul class="feature-deep__list">
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>15 languages supported</strong> — English, Korean, Chinese, Japanese, Spanish, French, German, Portuguese, Italian, Dutch, Russian, Hindi, Arabic, Turkish, and Indonesian</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Nova-2 AI engine</strong> — Industry-leading accuracy with smart formatting, punctuation, and sentence detection</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Zero audio stored</strong> — Audio is processed in real time and never stored on any server</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Designed for long sessions</strong> — Optimized for 10–40+ minute seminars, lectures, and meetings</span>
+          </li>
+        </ul>
+      </div>
+      <div class="feature-deep__visual">
+        <div class="image-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg>
+          Live Transcription Screenshot
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE DEEP-DIVE #2: REAL-TIME TRANSLATION
+     ============================================================ -->
+<section class="section section--alt" id="translation">
+  <div class="container">
+    <div class="feature-deep feature-deep--reverse">
+      <div class="feature-deep__content">
+        <span class="label">Real-Time Translation</span>
+        <h2 class="heading-lg">Understand anyone,<br>in any language.</h2>
+        <p class="text-lg">As the speaker talks, Waymark translates each completed sentence into your chosen language. The translation appears right below the original text — no context lost, no delay.</p>
+        <ul class="feature-deep__list">
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>13 translation languages</strong> — English, Korean, Chinese, Japanese, Spanish, French, German, Portuguese, Italian, Russian, Arabic, Hindi, and Indonesian</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Sentence-aware processing</strong> — Buffers until sentence-ending punctuation for accurate, contextual translation</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Side-by-side display</strong> — Original and translated text displayed together for easy comparison</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Included in PDF export</strong> — Both original transcript and translations appear in your exported report</span>
+          </li>
+        </ul>
+      </div>
+      <div class="feature-deep__visual">
+        <div class="image-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Real-Time Translation Screenshot
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE DEEP-DIVE #3: AI INTELLIGENCE CONSULTANT
+     ============================================================ -->
+<section class="section" id="intelligence">
+  <div class="container">
+    <div class="feature-deep">
+      <div class="feature-deep__content">
+        <span class="label">Intelligence Consultant</span>
+        <h2 class="heading-lg">Your personal analyst,<br>powered by AI.</h2>
+        <p class="text-lg">After a session, tap "Analyze" to send your transcript, notes, and photos to Waymark's Intelligence Consultant. It returns a comprehensive report with summaries, key themes, action items, and insights.</p>
+        <ul class="feature-deep__list">
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Multimodal analysis</strong> — Analyzes text transcripts, handwritten notes, and up to 5 photos in a single request</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Choose your report language</strong> — Get your analysis in English, Korean, or Chinese regardless of the source content</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Only on your command</strong> — Data is never sent to AI automatically. You control when and what is analyzed</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Auto-refund on failure</strong> — If the analysis fails, your credit is automatically returned to your balance</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Scrollable history</strong> — View all past analyses for a session, with the latest always at the top</span>
+          </li>
+        </ul>
+      </div>
+      <div class="feature-deep__visual">
+        <div class="image-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          AI Intelligence Report Screenshot
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE DEEP-DIVE #4: RICH NOTES & CAMERA
+     ============================================================ -->
+<section class="section section--alt" id="notes">
+  <div class="container">
+    <div class="feature-deep feature-deep--reverse">
+      <div class="feature-deep__content">
+        <span class="label">Rich Note-Taking &amp; Camera</span>
+        <h2 class="heading-lg">Write, draw, and<br>capture — side by side.</h2>
+        <p class="text-lg">Waymark's split-screen layout puts your live transcript on the left and a rich notes editor on the right. Add typed notes, freehand drawings, and inline photos — all within the same session.</p>
+        <ul class="feature-deep__list">
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Split-screen design</strong> — Live transcript and notes visible simultaneously in landscape mode</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Apple Pencil support</strong> — Draw diagrams, underline key points, and annotate photos with precision</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Inline camera capture</strong> — Snap slides, whiteboards, or documents without leaving the session</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Photo annotation</strong> — Draw directly on captured images using PencilKit, then include them in AI analysis</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Resizable images</strong> — Photos in notes can be resized to fit your layout, and sizes persist between sessions</span>
+          </li>
+        </ul>
+      </div>
+      <div class="feature-deep__visual">
+        <div class="image-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Split-Screen Notes &amp; Camera Screenshot
+        </div>
+      </div>
+    </div>
+
+    <!-- Apple Pencil Banner -->
+    <div class="pencil-banner" style="margin-top: 64px;">
+      <div class="pencil-banner__content">
+        <h3>Designed for Apple Pencil</h3>
+        <p>Waymark uses PencilKit — the same technology behind Apple Notes and Freeform. Draw, sketch, annotate, and mark up photos with pixel-perfect precision, ultra-low latency, and palm rejection.</p>
+      </div>
+      <div class="pencil-banner__visual">
+        Apple Pencil Image Placeholder
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE DEEP-DIVE #5: PDF EXPORT
+     ============================================================ -->
+<section class="section" id="export">
+  <div class="container">
+    <div class="feature-deep">
+      <div class="feature-deep__content">
+        <span class="label">PDF Export</span>
+        <h2 class="heading-lg">Beautiful reports,<br>ready to share.</h2>
+        <p class="text-lg">Turn any session into a polished, professional PDF with full control over what's included. Share via AirDrop, email, Files, or any app that accepts documents.</p>
+        <ul class="feature-deep__list">
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Choose your sections</strong> — Include or exclude transcript, translation, notes, photos, and AI report</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Styled and formatted</strong> — Professional layout with clean typography and organized sections</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>No watermark on paid accounts</strong> — Make any purchase and all your exports are watermark-free, permanently</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>You own your content</strong> — Everything you create in Waymark is yours to use, share, and distribute freely</span>
+          </li>
+        </ul>
+      </div>
+      <div class="feature-deep__visual">
+        <div class="image-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          PDF Export Screenshot
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FEATURE DEEP-DIVE #6: DASHBOARD & THEMES
+     ============================================================ -->
+<section class="section section--alt" id="dashboard">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">Beautiful Dashboard</span>
+      <h2 class="heading-xl">Your home base,<br>your way.</h2>
+      <p class="text-lg">Waymark greets you with a beautifully themed dashboard featuring ambient animations, your personal stats, and a customizable quote.</p>
+    </div>
+    <div class="dashboard-showcase">
+      <div class="dashboard-card dashboard-card--wide">
+        <div class="dashboard-card__title">6 Handcrafted Themes</div>
+        <div class="dashboard-card__desc">Choose from six unique home screen themes — each with its own background, text positioning, color palette, and ambient cloud animations. Browse and switch instantly with the filmstrip selector.</div>
+        <div class="dashboard-card__visual">Theme Filmstrip Screenshot Placeholder</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-card__title">Personal Stats at a Glance</div>
+        <div class="dashboard-card__desc">See your active sessions, captured images, words recorded, and words translated — all shown on your home screen with elegant glassy stat rows.</div>
+        <div class="dashboard-card__visual">Stats Screenshot Placeholder</div>
+      </div>
+      <div class="dashboard-card">
+        <div class="dashboard-card__title">Ambient Animations</div>
+        <div class="dashboard-card__desc">Floating clouds, lens flare effects, and golden-hour gradients bring your dashboard to life. Designed to be inspiring without ever being distracting.</div>
+        <div class="dashboard-card__visual">Animation Screenshot Placeholder</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS BAR
+     ============================================================ -->
+<section class="stats">
+  <div class="container">
+    <div class="stats__grid">
+      <div>
+        <div class="stat__number">15</div>
+        <div class="stat__label">Transcription Languages</div>
+      </div>
+      <div>
+        <div class="stat__number">13</div>
+        <div class="stat__label">Translation Languages</div>
+      </div>
+      <div>
+        <div class="stat__number">0</div>
+        <div class="stat__label">Third-Party Dependencies</div>
+      </div>
+      <div>
+        <div class="stat__number">3</div>
+        <div class="stat__label">App Interface Languages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+     ============================================================ -->
+<section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">How It Works</span>
+      <h2 class="heading-xl">From spoken word to<br>polished report in four steps.</h2>
+      <p class="text-lg">Waymark is designed so every part of your workflow — from capturing to analyzing — happens in one seamless experience.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step__number">1</div>
+        <h3 class="step__title">Start a Session</h3>
+        <p class="step__desc">Create a new session and tap record. Waymark connects to the cloud transcription engine and begins capturing speech immediately.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">2</div>
+        <h3 class="step__title">Capture Everything</h3>
+        <p class="step__desc">Watch the transcript appear in real time on the left, while you take rich notes, draw diagrams, and snap photos on the right.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">3</div>
+        <h3 class="step__title">Analyze with AI</h3>
+        <p class="step__desc">Tap "Analyze" to send your full session — transcript, notes, and photos — to Waymark's Intelligence Consultant for a comprehensive report.</p>
+      </div>
+      <div class="step">
+        <div class="step__number">4</div>
+        <h3 class="step__title">Export &amp; Share</h3>
+        <p class="step__desc">Generate a professionally styled PDF choosing exactly which sections to include, then share it via AirDrop, email, or save to Files.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SESSION VIEW DEEP DIVE
+     ============================================================ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">The Session Experience</span>
+      <h2 class="heading-xl">A workspace designed<br>for focus.</h2>
+      <p class="text-lg">Waymark's two-column session view puts everything you need within reach — transcript, translation, notes, drawing, camera, and AI — without ever leaving the screen.</p>
+    </div>
+    <div class="image-placeholder image-placeholder--wide" style="max-width: 1000px; margin: 0 auto;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="12" y1="3" x2="12" y2="17"/></svg>
+      Split-Screen Session View (Full Width) Placeholder
+    </div>
+    <div class="metric-callouts">
+      <div class="metric-callout">
+        <div class="metric-callout__value">40+</div>
+        <div class="metric-callout__label">Minutes of continuous recording</div>
+      </div>
+      <div class="metric-callout">
+        <div class="metric-callout__value">5</div>
+        <div class="metric-callout__label">Photos per AI analysis</div>
+      </div>
+      <div class="metric-callout">
+        <div class="metric-callout__value">4,000</div>
+        <div class="metric-callout__label">Words of notes per analysis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     USE CASES
+     ============================================================ -->
+<section class="section" id="use-cases">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">Use Cases</span>
+      <h2 class="heading-xl">Built for every scenario<br>where words matter.</h2>
+      <p class="text-lg">Whether you're in a conference hall, a classroom, a boardroom, or a courtroom — Waymark captures, translates, and analyzes what's said so you can focus on what matters.</p>
+    </div>
+    <div class="use-cases">
+      <div class="use-case">
+        <div class="use-case__image">
+          <span>Seminar / Conference Image Placeholder</span>
+        </div>
+        <div class="use-case__content">
+          <span class="use-case__tag">Education</span>
+          <h3 class="use-case__title">Seminars &amp; Conferences</h3>
+          <p class="use-case__desc">Capture keynotes and panel discussions in real time. Snap photos of presentation slides, then generate an AI report that summarizes key takeaways and action items from the entire event.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case__image">
+          <span>University Lecture Image Placeholder</span>
+        </div>
+        <div class="use-case__content">
+          <span class="use-case__tag">Academic</span>
+          <h3 class="use-case__title">University Lectures</h3>
+          <p class="use-case__desc">Record a 40-minute lecture while taking handwritten notes alongside the live transcript. Review, annotate, and export a complete study guide — every word preserved.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case__image">
+          <span>Business Meeting Image Placeholder</span>
+        </div>
+        <div class="use-case__content">
+          <span class="use-case__tag">Business</span>
+          <h3 class="use-case__title">Business Meetings</h3>
+          <p class="use-case__desc">Never miss a detail in client calls, team standups, or board meetings. Waymark's AI Intelligence identifies decisions, action items, and follow-ups so nothing falls through the cracks.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case__image">
+          <span>Multilingual Event Image Placeholder</span>
+        </div>
+        <div class="use-case__content">
+          <span class="use-case__tag">International</span>
+          <h3 class="use-case__title">Multilingual Events</h3>
+          <p class="use-case__desc">Attend a talk in Japanese, see the transcript in real time, and read the translation in English — all simultaneously. Cross-language understanding made effortless.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case__image">
+          <span>Training Workshop Image Placeholder</span>
+        </div>
+        <div class="use-case__content">
+          <span class="use-case__tag">Professional</span>
+          <h3 class="use-case__title">Training &amp; Workshops</h3>
+          <p class="use-case__desc">Capture training content, photograph process diagrams, and generate comprehensive documentation. Export polished PDFs for your team to reference anytime.</p>
+        </div>
+      </div>
+      <div class="use-case">
+        <div class="use-case__image">
+          <span>Research Interview Image Placeholder</span>
+        </div>
+        <div class="use-case__content">
+          <span class="use-case__tag">Research</span>
+          <h3 class="use-case__title">Research &amp; Interviews</h3>
+          <p class="use-case__desc">Conduct research interviews with a full live transcript. Add observational notes alongside, then use AI analysis to identify recurring themes and insights across sessions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LANGUAGES
+     ============================================================ -->
+<section class="section section--alt" id="languages">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">Global Reach</span>
+      <h2 class="heading-xl">Speak any language.<br>Understand every one.</h2>
+      <p class="text-lg">Waymark supports 15 transcription languages and 13 translation languages. The app interface itself is available in English, Korean, and Chinese — switchable at any time.</p>
+    </div>
+
+    <div style="margin-bottom: 40px;">
+      <h3 class="heading-sm" style="text-align: center; margin-bottom: 20px;">Transcription Languages (15)</h3>
+      <div class="languages-grid">
+        <span class="lang-pill"><span class="lang-pill__flag">🇺🇸</span> English</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇰🇷</span> Korean</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇨🇳</span> Chinese</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇯🇵</span> Japanese</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇪🇸</span> Spanish</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇫🇷</span> French</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇩🇪</span> German</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇵🇹</span> Portuguese</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇹</span> Italian</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇳🇱</span> Dutch</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇷🇺</span> Russian</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇳</span> Hindi</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇸🇦</span> Arabic</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇹🇷</span> Turkish</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇩</span> Indonesian</span>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="heading-sm" style="text-align: center; margin-bottom: 20px;">Translation Languages (13)</h3>
+      <div class="languages-grid">
+        <span class="lang-pill"><span class="lang-pill__flag">🇺🇸</span> English</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇰🇷</span> Korean</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇨🇳</span> Chinese</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇯🇵</span> Japanese</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇪🇸</span> Spanish</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇫🇷</span> French</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇩🇪</span> German</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇵🇹</span> Portuguese</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇹</span> Italian</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇷🇺</span> Russian</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇸🇦</span> Arabic</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇳</span> Hindi</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇩</span> Indonesian</span>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px; text-align: center;">
+      <h3 class="heading-sm" style="margin-bottom: 16px;">App Interface Languages</h3>
+      <div class="languages-grid">
+        <span class="lang-pill" style="border-color: var(--color-accent); background: var(--color-accent-light);"><span class="lang-pill__flag">🇺🇸</span> English</span>
+        <span class="lang-pill" style="border-color: var(--color-accent); background: var(--color-accent-light);"><span class="lang-pill__flag">🇰🇷</span> 한국어</span>
+        <span class="lang-pill" style="border-color: var(--color-accent); background: var(--color-accent-light);"><span class="lang-pill__flag">🇨🇳</span> 中文</span>
+      </div>
+      <p class="text-sm" style="margin-top: 12px;">Switch languages at any time from Settings — no app restart required.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECURITY & PRIVACY
+     ============================================================ -->
+<section class="section section--dark" id="security">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">Security &amp; Privacy</span>
+      <h2 class="heading-xl">Your data stays yours.<br>No exceptions.</h2>
+      <p class="text-lg">Waymark was built with a privacy-first architecture. Your session content — transcripts, notes, drawings, photos, and AI reports — is stored exclusively on your iPad. We never store your content on our servers.</p>
+    </div>
+    <div class="security-grid">
+      <div class="security-card">
+        
+        <h3 class="security-card__title">On-Device Storage</h3>
+        <p class="security-card__desc">All session data is stored locally on your iPad using Apple's SwiftData. We cannot access, read, or recover your content. You own it entirely.</p>
+      </div>
+      <div class="security-card">
+        
+        <h3 class="security-card__title">App Attest</h3>
+        <p class="security-card__desc">Every API request from Waymark is cryptographically signed using Apple's App Attest, preventing unauthorized access from outside the genuine app.</p>
+      </div>
+      <div class="security-card">
+        
+        <h3 class="security-card__title">Keychain Security</h3>
+        <p class="security-card__desc">Authentication tokens are stored in the iOS Keychain — hardware-encrypted and inaccessible to other apps. Survives app reinstalls.</p>
+      </div>
+      <div class="security-card">
+        
+        <h3 class="security-card__title">TLS Encryption</h3>
+        <p class="security-card__desc">All communication between the app and servers uses HTTPS with TLS encryption. No secret API keys are stored in the app binary — all keys are server-side.</p>
+      </div>
+      <div class="security-card">
+        
+        <h3 class="security-card__title">No Audio Stored</h3>
+        <p class="security-card__desc">Audio is streamed in real time for transcription and is never stored — not on our servers, not by the provider. We never have access to your raw audio.</p>
+      </div>
+      <div class="security-card">
+        
+        <h3 class="security-card__title">Rate Limiting &amp; Anomaly Detection</h3>
+        <p class="security-card__desc">Per-user, per-endpoint rate limiting and automated anomaly detection prevents abuse and protects every user's experience.</p>
+      </div>
+      <div class="security-card">
+        
+        <h3 class="security-card__title">Sign in with Apple</h3>
+        <p class="security-card__desc">Authenticate securely via Apple's identity system. Your Apple ID credentials are never shared with us. You can even use a private relay email.</p>
+      </div>
+      <div class="security-card">
+        
+        <h3 class="security-card__title">Row-Level Security</h3>
+        <p class="security-card__desc">Server-side data is protected by row-level security policies and encrypted at rest. Balance operations use atomic transactions to prevent race conditions.</p>
+      </div>
+      <div class="security-card">
+        
+        <h3 class="security-card__title">Full Account Deletion</h3>
+        <p class="security-card__desc">Delete your account from Settings at any time. All server-side data is permanently and immediately removed — authentication, balances, usage logs, everything.</p>
+      </div>
+    </div>
+
+    <div style="max-width: 600px; margin: 64px auto 0; text-align: center;">
+      <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7;">We do not sell, rent, or share your personal information with third parties for advertising or marketing purposes. We have zero third-party dependencies in our app binary — it's 100% Apple-native Swift.</p>
+      <div style="margin-top: 24px;">
+        <a href="/waymark-privacy-policy.html" class="btn btn--sm" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);">Read Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+     ============================================================ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">Pricing</span>
+      <h2 class="heading-xl">Pay as you go.<br>No subscriptions. Ever.</h2>
+      <p class="text-lg">Start with free credits on signup, then purchase top-up packs only when you need them. No recurring charges, no auto-renewals, no commitments.</p>
+    </div>
+
+    <div class="pricing-intro">
+      <div class="pricing-highlight">
+        Every new account gets free transcription, translation, and AI credits
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        
+        <h3 class="pricing-card__name">Transcription</h3>
+        <p class="pricing-card__amount">60 minutes</p>
+        <div class="pricing-card__price">$2.99</div>
+        <p class="pricing-card__price-note">One-time purchase · USD</p>
+        <ul class="pricing-card__features">
+          <li>60 minutes of live speech-to-text</li>
+          <li>15 transcription languages</li>
+          <li>Nova-2 AI accuracy</li>
+          <li>Valid for 1 month after purchase</li>
+          <li>Stack multiple packs anytime</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-card__badge">Most Popular</div>
+        
+        <h3 class="pricing-card__name">Translation</h3>
+        <p class="pricing-card__amount">60 minutes</p>
+        <div class="pricing-card__price">$3.99</div>
+        <p class="pricing-card__price-note">One-time purchase · USD</p>
+        <ul class="pricing-card__features">
+          <li>60 minutes of real-time translation</li>
+          <li>13 translation languages</li>
+          <li>Sentence-aware accuracy</li>
+          <li>Valid for 1 month after purchase</li>
+          <li>Stack multiple packs anytime</li>
+        </ul>
+      </div>
+
+      <div class="pricing-card">
+        
+        <h3 class="pricing-card__name">AI Reports</h3>
+        <p class="pricing-card__amount">100 reports</p>
+        <div class="pricing-card__price">$4.99</div>
+        <p class="pricing-card__price-note">One-time purchase · USD</p>
+        <ul class="pricing-card__features">
+          <li>100 Intelligence Consultant analyses</li>
+          <li>Multimodal (text + photos)</li>
+          <li>Choose report language</li>
+          <li>Auto-refund on failure</li>
+          <li>Stack multiple packs anytime</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Free vs Purchased comparison -->
+    <div class="comparison">
+      <h3 class="heading-sm" style="text-align: center; margin-bottom: 24px;">Free vs. Purchased Account</h3>
+      <table class="comparison__table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th>Purchased</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free credits on signup</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Live transcription</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Real-time translation</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>AI Intelligence reports</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Rich notes &amp; camera</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>PDF export</td>
+            <td>Watermarked</td>
+            <td>Clean (no watermark)</td>
+          </tr>
+          <tr>
+            <td>Lifetime session cap</td>
+            <td>50 sessions</td>
+            <td>350 sessions</td>
+          </tr>
+          <tr>
+            <td>Credit packs</td>
+            <td><span class="cross">—</span></td>
+            <td>Buy anytime, stack freely</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text-sm" style="text-align: center; margin-top: 16px;">All purchases are processed securely through the App Store. Prices shown in USD; your local currency may differ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW CREDITS WORK
+     ============================================================ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">How Credits Work</span>
+      <h2 class="heading-xl">Simple, transparent,<br>and under your control.</h2>
+    </div>
+    <div class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="feature-card">
+        
+        <h3 class="feature-card__title">Buy When You Need</h3>
+        <p class="feature-card__desc">Purchase credit packs anytime — there are no subscriptions, no auto-renewals, and no commitments. Each pack adds credits to your balance instantly.</p>
+      </div>
+      <div class="feature-card">
+        
+        <h3 class="feature-card__title">1-Month Validity</h3>
+        <p class="feature-card__desc">Each credit pack expires 1 month after purchase. This keeps pricing fair and sustainable. Plan your purchases around your upcoming events.</p>
+      </div>
+      <div class="feature-card">
+        
+        <h3 class="feature-card__title">First-In, First-Out</h3>
+        <p class="feature-card__desc">When you have multiple packs, the oldest credits are consumed first (FIFO). This ensures you always use what's closest to expiring before newer credits.</p>
+      </div>
+      <div class="feature-card">
+        
+        <h3 class="feature-card__title">Stack Freely</h3>
+        <p class="feature-card__desc">Buy as many packs as you want. Each creates an independent balance with its own expiry. Preparing for a conference? Stock up before you go.</p>
+      </div>
+      <div class="feature-card">
+        
+        <h3 class="feature-card__title">Account-Synced Balance</h3>
+        <p class="feature-card__desc">Your credit balance is tied to your account, not your device. Sign in on any iPad and your balance goes with you.</p>
+      </div>
+      <div class="feature-card">
+        
+        <h3 class="feature-card__title">Full Transparency</h3>
+        <p class="feature-card__desc">Check your remaining balance on the main screen. For a detailed breakdown with expiry dates, visit Settings → Usage Details at any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SESSION LIST & MANAGEMENT
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="feature-deep feature-deep--reverse">
+      <div class="feature-deep__content">
+        <span class="label">Session Management</span>
+        <h2 class="heading-lg">Every session, organized<br>and searchable.</h2>
+        <p class="text-lg">Your sessions are displayed as elegant glass-style cards with search, sort, and star functionality. Find any session instantly, and keep your most important ones front and center.</p>
+        <ul class="feature-deep__list">
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Glass card design</strong> — Sessions displayed as elegant translucent cards with session details</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Search &amp; sort</strong> — Find any session by title or content. Sort by date, name, or featured status</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>Star &amp; feature</strong> — Mark important sessions as featured for quick access on your home screen</span>
+          </li>
+          <li>
+            <span class="feature-deep__list-icon">✓</span>
+            <span><strong>iCloud backup</strong> — Session data is included in your iPad's iCloud backup for peace of mind</span>
+          </li>
+        </ul>
+      </div>
+      <div class="feature-deep__visual">
+        <div class="image-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Session List Screenshot
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIAL
+     ============================================================ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="testimonial-card">
+      <div class="testimonial-card__stars">★★★★★</div>
+      <p class="testimonial-card__quote">"Waymark completely changed how I approach conferences. I capture every word, snap every slide, and leave with AI-generated action items. It's like having a personal assistant on my iPad."</p>
+      <p class="testimonial-card__author">— Testimonial Placeholder</p>
+      <p class="testimonial-card__role">Replace with real user testimonial</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TECHNICAL SPECS
+     ============================================================ -->
+<section class="section">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">Under the Hood</span>
+      <h2 class="heading-xl">Built different.<br>Built right.</h2>
+      <p class="text-lg">Waymark is 100% Apple-native with zero third-party dependencies. No SDKs, no trackers, no bloat — just pure Swift, SwiftUI, and Apple frameworks.</p>
+    </div>
+    <div class="features-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="feature-card">
+        <h3 class="feature-card__title">Pure Apple Stack</h3>
+        <p class="feature-card__desc">Built exclusively with Swift, SwiftUI, SwiftData, PencilKit, CryptoKit, StoreKit 2, DeviceCheck, and DCAppAttestService. Zero third-party packages imported.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-card__title">Optimized for iPad</h3>
+        <p class="feature-card__desc">Designed exclusively for landscape iPadOS. Split-screen workflows, optimized performance for long recording sessions, and thermal management to prevent overheating.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-card__title">Server Architecture</h3>
+        <p class="feature-card__desc">Secure edge functions handle all third-party API communication. No secret keys in the app binary. Atomic database operations prevent race conditions on balance changes.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="feature-card__title">Smart Audio Pipeline</h3>
+        <p class="feature-card__desc">AVAudioEngine streams to WebSocket with 500ms endpointing, smart formatting, and speech-final buffering. Sentence-aware translation batches text at punctuation boundaries with 8-second timeout.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="section section--alt" id="faq">
+  <div class="container">
+    <div class="section__header">
+      <span class="label">FAQ</span>
+      <h2 class="heading-xl">Questions? Answered.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <details>
+          <summary>What is Waymark?</summary>
+          <div class="faq-answer">
+            <p>Waymark is an iPadOS productivity app designed for seminars, lectures, meetings, and any scenario where you need to capture spoken content. It combines live speech-to-text transcription, real-time translation, rich note-taking with drawing and photo annotation, AI-powered session analysis, and PDF export — all in one app.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>What devices does Waymark support?</summary>
+          <div class="faq-answer">
+            <p>Waymark is designed exclusively for iPad running iPadOS 17.0 or later. It is optimized for landscape orientation and supports Apple Pencil for drawing and annotation. Waymark is not available on iPhone, Mac, or other platforms.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Do I need an internet connection?</summary>
+          <div class="faq-answer">
+            <p>An internet connection is required for live transcription, translation, AI analysis, and purchasing credit packs. You can review existing sessions, edit notes, and browse your session list offline.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Is there a subscription?</summary>
+          <div class="faq-answer">
+            <p>No. Waymark uses a pay-as-you-go model with consumable credit packs. There are no subscriptions, no auto-renewals, and no recurring charges. You purchase credits only when you need them.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>What do I get for free?</summary>
+          <div class="faq-answer">
+            <p>Every new account receives a one-time free allocation of transcription minutes, translation minutes, and AI analysis credits. This allocation expires 30 days after signup. All features are available — no artificial restrictions on free accounts except the watermark on PDF exports and a 50-session lifetime cap.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Do purchased credits expire?</summary>
+          <div class="faq-answer">
+            <p>Yes. Each credit pack expires 1 month after the date of purchase. Credits are consumed on a first-in, first-out (FIFO) basis — the oldest credits are used first. Expired, unused credits are forfeited and cannot be refunded.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Is my data private and secure?</summary>
+          <div class="faq-answer">
+            <p>Yes. All session content — transcripts, translations, notes, drawings, photos, and AI reports — is stored exclusively on your iPad. We never store your content on our servers. Audio is processed in real time and is not stored anywhere after transcription. All API communication is encrypted and cryptographically signed using Apple's App Attest.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Is my audio recorded and stored on your servers?</summary>
+          <div class="faq-answer">
+            <p>No. Audio is streamed to our speech-to-text provider in real time during recording and is not stored — not on our servers, and not by the provider after processing. We never have access to your raw audio.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>When is my data sent to AI?</summary>
+          <div class="faq-answer">
+            <p>Your session data is only sent when you explicitly tap the "Analyze" button. It is never sent automatically. You are always in control of when and what is shared with the AI service. The data sent includes your transcript text, notes text, and up to 5 photos from the session.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>Can I use Waymark on multiple iPads?</summary>
+          <div class="faq-answer">
+            <p>Yes. Sign in with the same Apple ID on any iPad and your credit balance syncs. However, session content is stored locally and does not sync between devices — each device has its own session library.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>What happens if I delete the app?</summary>
+          <div class="faq-answer">
+            <p>Uninstalling Waymark permanently deletes all session data from your iPad. This data cannot be recovered. Your server-side account (credit balances, purchase history) remains intact and will be available when you reinstall and sign in again.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>How do I request a refund?</summary>
+          <div class="faq-answer">
+            <p>All purchases are processed by Apple. To request a refund, visit <a href="https://reportaproblem.apple.com" rel="noopener" target="_blank" style="color: var(--color-accent);">reportaproblem.apple.com</a> or contact Apple Support. We do not process refunds directly.</p>
+          </div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>How do I delete my account?</summary>
+          <div class="faq-answer">
+            <p>Go to Settings → Delete Account within the app. This immediately and permanently deletes all your server-side data, including authentication records, credit balances, purchase history, usage logs, and security keys.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="/waymark-support.html" class="btn btn--secondary">View Full Help Center →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="heading-xl">Ready to capture every word<br>that matters?</h2>
+    <p class="text-lg">Download Waymark for free. Start transcribing, translating, and analyzing your next session in minutes.</p>
+    <div class="cta-banner__actions">
+      <a href="http://apps.apple.com/app/id6760979716" class="btn btn--primary btn--lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download for iPad
+      </a>
+      <a href="/waymark-support.html" class="btn btn--secondary btn--lg">Contact Support</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 13px; color: var(--color-text-tertiary);">iPadOS 17.0+ &nbsp;·&nbsp; Free to start &nbsp;·&nbsp; No subscription required</p>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="/js/layout.js"></script>
+
+</body>
+</html>
