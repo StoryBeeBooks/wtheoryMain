@@ -364,7 +364,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 /* ── HERO (Corporate) ── */
 .hero {
-  padding: 180px 0 120px;
+  padding: 180px 0 100px;
   text-align: center;
   background: linear-gradient(180deg, #FFFFFF 0%, var(--color-bg) 100%);
 }
@@ -392,6 +392,166 @@ button { cursor: pointer; font-family: inherit; border: none; }
   justify-content: center;
   gap: 16px;
   flex-wrap: wrap;
+}
+
+/* ── STATS BAR ── */
+.stats-bar {
+  padding: 60px 0;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+}
+
+.stats-bar__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+.stats-bar__item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stats-bar__number {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  line-height: 1.1;
+}
+
+.stats-bar__label {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .stats-bar__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-bar__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── STORY BLOCK (Text + Media side-by-side) ── */
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.story--reverse {
+  direction: rtl;
+}
+
+.story--reverse > * {
+  direction: ltr;
+}
+
+.story__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.story__content .label {
+  display: block;
+}
+
+.story__content .heading-lg {
+  margin: 0;
+}
+
+.story__stat {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.story__stat-number {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.story__stat-text {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.story__media {
+  position: relative;
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  background: var(--color-surface-alt);
+  aspect-ratio: 4 / 3;
+}
+
+.story__media img,
+.story__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.story__media-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+  border: 2px dashed var(--color-border-light);
+  border-radius: var(--radius-2xl);
+  min-height: 300px;
+}
+
+@media (max-width: 768px) {
+  .story {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .story--reverse {
+    direction: ltr;
+  }
+}
+
+/* ── QUOTE BLOCK ── */
+.quote-block {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.quote-block__text {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: var(--color-text);
+  font-style: italic;
+}
+
+.quote-block__source {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+  font-style: normal;
 }
 
 /* ── ROUTING GRID (Homepage Cards) ── */
