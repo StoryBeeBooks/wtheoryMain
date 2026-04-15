@@ -37,36 +37,27 @@
 })();
 
 /* ── Scroll-driven section inset effect ──
-   Full-width sections near #solutions smoothly gain side margins
-   and rounded corners as the user scrolls to the solutions area,
-   aligning their edges with the solution banners' padding. */
+   Every full-width section smoothly gains side margins and rounded
+   corners based on its own viewport position. When a section is
+   centred in view it sits edge-to-edge; as it scrolls away from
+   centre it becomes a card with padding that aligns with the
+   solution banners. */
 (function () {
   'use strict';
 
   function initSectionInset() {
-    var solutions = document.getElementById('solutions');
-    if (!solutions) return;
+    // Collect every full-width section + hero + footer on the homepage
+    var targets = Array.prototype.slice.call(
+      document.querySelectorAll('.hero, .section, #footer-placeholder')
+    );
 
-    var targets = [];
-
-    // Collect full-width sections above solutions (up to 3)
-    var el = solutions.previousElementSibling;
-    var count = 0;
-    while (el && count < 3) {
-      if (el.classList && el.classList.contains('section')) {
-        targets.push(el);
-        count++;
-      }
-      el = el.previousElementSibling;
-    }
-
-    // Collect footer placeholder below solutions
-    var footerEl = document.getElementById('footer-placeholder');
-    if (footerEl) targets.push(footerEl);
+    // Exclude the solutions section itself — its banners have their own padding
+    targets = targets.filter(function (el) {
+      return el.id !== 'solutions';
+    });
 
     if (targets.length === 0) return;
 
-    // Prepare elements for animation
     targets.forEach(function (t) {
       t.style.overflow = 'hidden';
     });
@@ -83,24 +74,29 @@
     function update() {
       ticking = false;
 
-      var rect = solutions.getBoundingClientRect();
       var vh = window.innerHeight;
-
-      // progress: 0 when solutions top is at viewport bottom
-      //           1 when solutions top reaches viewport top
-      var raw = 1 - Math.max(0, Math.min(1, rect.top / vh));
-
-      // smoothstep easing for a polished, organic feel
-      var progress = raw * raw * (3 - 2 * raw);
-
-      // Target inset matches solution-banners padding: clamp(16px, 3vw, 48px)
       var maxInset = Math.max(16, Math.min(window.innerWidth * 0.03, 48));
       var maxRadius = 32;
 
-      var inset = progress * maxInset;
-      var radius = progress * maxRadius;
-
       targets.forEach(function (t) {
+        var rect = t.getBoundingClientRect();
+
+        // Centre of the element relative to viewport centre
+        var elCentre = rect.top + rect.height / 2;
+        var vpCentre = vh / 2;
+
+        // Distance from viewport centre, normalised 0→1
+        // 0 = element centred in viewport (full-width)
+        // 1 = element is off-screen or at viewport edge (max inset)
+        var dist = Math.abs(elCentre - vpCentre) / (vh * 0.8);
+        var raw = Math.max(0, Math.min(1, dist));
+
+        // smoothstep easing
+        var progress = raw * raw * (3 - 2 * raw);
+
+        var inset = progress * maxInset;
+        var radius = progress * maxRadius;
+
         t.style.marginLeft = inset + 'px';
         t.style.marginRight = inset + 'px';
         t.style.borderRadius = radius + 'px';
@@ -112,6 +108,5 @@
     update();
   }
 
-  // Expose for the layout injection callback above
   window.initSectionInset = initSectionInset;
 })();
