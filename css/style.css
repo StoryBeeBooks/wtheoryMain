@@ -39,8 +39,9 @@
   --transition-fast: 0.15s ease;
   --transition-base: 0.25s ease;
   --transition-smooth: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --max-width: 1200px;
+  --max-width: 1400px;
   --max-width-narrow: 800px;
+  --max-width-wide: 1600px;
 }
 
 /* ── BASE ── */
@@ -66,13 +67,19 @@ button { cursor: pointer; font-family: inherit; border: none; }
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 clamp(24px, 5vw, 80px);
 }
 
 .container--narrow {
   max-width: var(--max-width-narrow);
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+.container--wide {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
 }
 
 /* ── TYPOGRAPHY ── */
@@ -470,7 +477,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 32px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 64px auto 0;
   text-align: center;
 }
