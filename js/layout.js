@@ -26,7 +26,7 @@
       if (!href) return;
       if (href === '/' && path === '/') {
         a.classList.add('active');
-      } else if (href !== '/' && path.indexOf(href.replace(/\.html$/, '')) === 0) {
+      } else if (href !== '/' && href.indexOf('#') === -1 && path.indexOf(href) === 0) {
         a.classList.add('active');
       }
     });

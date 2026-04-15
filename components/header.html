@@ -1,9 +1,17 @@
 <nav class="nav">
   <div class="nav__inner">
-    <a href="/" class="nav__logo">West Solution</a>
+    <a href="/" class="nav__logo">Main</a>
     <ul class="nav__links">
-      <li><a href="/#solutions">Solutions</a></li>
-      <li><a href="/faq.html">FAQ</a></li>
+      <li>
+        <button class="nav__dropdown-trigger">Solutions</button>
+        <ul class="nav__dropdown">
+          <li><a href="/waymark">Waymark</a></li>
+          <li><a href="/access-canada">Access Canada</a></li>
+          <li><a href="/signet">Signet</a></li>
+          <li><a href="/web-development">Web Development</a></li>
+        </ul>
+      </li>
+      <li><a href="/global-intelligence">Intelligence</a></li>
     </ul>
     <button class="nav__mobile-toggle" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.add('is-open')">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
@@ -15,6 +23,12 @@
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
   <a href="/">Home</a>
-  <a href="/#solutions">Solutions</a>
-  <a href="/faq.html">FAQ</a>
+  <span style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-tertiary); margin-top: 16px;">Solutions</span>
+  <a href="/waymark">Waymark</a>
+  <a href="/access-canada">Access Canada</a>
+  <a href="/signet">Signet</a>
+  <a href="/web-development">Web Development</a>
+  <span style="font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-tertiary); margin-top: 16px;">More</span>
+  <a href="/global-intelligence">Intelligence</a>
+  <a href="/faq">FAQ</a>
 </div>
