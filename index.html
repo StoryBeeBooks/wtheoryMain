@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>West Solution Consulting — The Engine for Business Scale</title>
 <meta name="description" content="We engineer the digital infrastructure that transforms small businesses into market leaders. Strategic insights, digital tools, and targeted ecosystems for local growth and North American expansion.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -12,25 +15,7 @@
 <div id="header-placeholder"></div>
 
 <!-- ============================================================
-     HERO
-     ============================================================ -->
-<section class="hero">
-  <div class="container">
-    <h1 class="heading-hero hero__title">
-      Small Businesses Create<br>Half the Jobs.<br><span class="hero__title-accent">Most Won't Survive.</span>
-    </h1>
-    <p class="text-lg hero__subtitle">
-      Every year, millions of businesses launch with ambition — and fail because they lack the infrastructure to scale. We build the tools that change those odds.
-    </p>
-    <div class="hero__actions">
-      <a href="#the-problem" class="btn btn--primary btn--lg">See the Numbers</a>
-      <a href="#solutions" class="btn btn--secondary btn--lg">Our Solutions</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     STATS BAR
+     STATS BAR (Top of page, Sana-style)
      ============================================================ -->
 <section class="stats-bar">
   <div class="container">
@@ -51,6 +36,23 @@
         <span class="stats-bar__number">71%</span>
         <span class="stats-bar__label">of businesses expanding internationally cite market intelligence as their top gap</span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="container" style="text-align: center;">
+    <h1 class="heading-hero hero__title">
+      Small Businesses Create<br>Half the Jobs.<br><span class="hero__title-accent">Most Won't Survive.</span>
+    </h1>
+    <p class="text-lg hero__subtitle">
+      Every year, millions of businesses launch with ambition — and fail because they lack the infrastructure to scale. We build the tools that change those odds.
+    </p>
+    <div class="hero__media">
+      <div class="story__media-placeholder" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--color-text-tertiary); border: 2px dashed var(--color-border-light); border-radius: var(--radius-2xl);">Image: Product dashboard overview</div>
     </div>
   </div>
 </section>
@@ -194,76 +196,61 @@
 </section>
 
 <!-- ============================================================
-     SOLUTIONS ROUTING GRID
+     SOLUTIONS — Horizontal Banners
      ============================================================ -->
-<section class="section section--alt" id="solutions">
+<section class="section" id="solutions">
   <div class="container">
     <div class="section__header">
       <span class="label">Solutions</span>
       <h2 class="heading-xl">Choose Your Growth Path</h2>
     </div>
 
-    <div class="routing-grid">
+    <div class="solution-banners">
 
-      <div class="routing-card">
-        <span class="label routing-card__label">Digital Presence</span>
-        <p class="routing-card__problem">
-          Your current website fails to reflect your enterprise value or convert high-level B2B leads.
-        </p>
-        <p class="routing-card__solution">
-          We design and deploy high-converting digital footprints tailored for complex business operations.
-        </p>
-        <a href="https://sites.wtheory.com" target="_blank" rel="noopener" class="routing-card__cta">Build Your Authority</a>
-      </div>
+      <a href="https://sites.wtheory.com" target="_blank" rel="noopener" class="solution-banner">
+        <img src="/img/gi/osint-data.jpg" alt="Digital Presence" class="solution-banner__img" loading="lazy">
+        <div class="solution-banner__overlay"></div>
+        <div class="solution-banner__content">
+          <span class="solution-banner__label">Digital Presence</span>
+          <h3 class="solution-banner__title">Enhance Web Exposure</h3>
+          <p class="solution-banner__desc">We design and deploy high-converting websites, web apps, iOS apps, and Google Play apps tailored for complex business operations.</p>
+          <span class="solution-banner__cta">Build Your Authority</span>
+        </div>
+      </a>
 
-      <div class="routing-card">
-        <span class="label routing-card__label">Meeting Intelligence</span>
-        <p class="routing-card__problem">
-          Critical strategic details and cross-lingual nuances are lost the moment a meeting ends.
-        </p>
-        <p class="routing-card__solution">
-          Capture, translate, and analyze every conversation with a secure iPadOS environment.
-        </p>
-        <a href="/waymark" class="routing-card__cta">Never Miss a Detail</a>
-      </div>
+      <a href="/waymark" class="solution-banner">
+        <img src="/img/gi/aviation-radar.jpg" alt="Meeting Intelligence" class="solution-banner__img" loading="lazy">
+        <div class="solution-banner__overlay"></div>
+        <div class="solution-banner__content">
+          <span class="solution-banner__label">Meeting Intelligence</span>
+          <h3 class="solution-banner__title">Capture Intelligence</h3>
+          <p class="solution-banner__desc">Capture, translate, and analyze every conversation with a secure iPadOS environment. Never lose a detail across 15+ languages.</p>
+          <span class="solution-banner__cta">Never Miss a Detail</span>
+        </div>
+      </a>
 
-      <div class="routing-card">
-        <span class="label routing-card__label">Market Expansion</span>
-        <p class="routing-card__problem">
-          Entering a new market is risky without direct access to local channels, funding, and capital.
-        </p>
-        <p class="routing-card__solution">
-          Uncover grants, secure tenders, and connect with Canadian investors and buyers.
-        </p>
-        <a href="/access-canada" class="routing-card__cta">Accelerate Market Entry</a>
-      </div>
+      <a href="/access-canada" class="solution-banner">
+        <img src="/img/gi/maritime-port.jpg" alt="Market Expansion" class="solution-banner__img" loading="lazy">
+        <div class="solution-banner__overlay"></div>
+        <div class="solution-banner__content">
+          <span class="solution-banner__label">Market Expansion</span>
+          <h3 class="solution-banner__title">Expand Business</h3>
+          <p class="solution-banner__desc">Uncover grants, secure tenders, and connect with Canadian investors and buyers. Your targeted ecosystem for North American entry.</p>
+          <span class="solution-banner__cta">Accelerate Market Entry</span>
+        </div>
+      </a>
 
-      <div class="routing-card">
-        <span class="label routing-card__label">Local Acquisition</span>
-        <p class="routing-card__problem">
-          Traditional advertising fails to drive actual product trials or foot traffic.
-        </p>
-        <p class="routing-card__solution">
-          Connect with your community through a frictionless free-sampling marketplace.
-        </p>
-        <a href="/signet" class="routing-card__cta">Drive Local Trials</a>
-      </div>
+      <a href="/signet" class="solution-banner">
+        <img src="/img/gi/energy-solar.jpg" alt="Local Acquisition" class="solution-banner__img" loading="lazy">
+        <div class="solution-banner__overlay"></div>
+        <div class="solution-banner__content">
+          <span class="solution-banner__label">Local Acquisition</span>
+          <h3 class="solution-banner__title">Find the Right Products</h3>
+          <p class="solution-banner__desc">Connect with your community through a frictionless free-sampling marketplace. Real foot traffic from real neighbours.</p>
+          <span class="solution-banner__cta">Drive Local Trials</span>
+        </div>
+      </a>
 
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     PIPELINE CTA
-     ============================================================ -->
-<section class="pipeline">
-  <div class="container">
-    <h2 class="heading-xl">Ready to Remove the Friction?</h2>
-    <p class="text-lg">
-      Whether you're a local shop trying to get your first 100 loyal customers, a startup expanding across borders, or a firm that can't afford to lose another word in translation — we built something for you.
-    </p>
-    <div style="margin-top: 40px;">
-      <a href="mailto:support@wtheory.com?subject=Growth%20Inquiry" class="btn btn--primary btn--lg" style="background: #fff; color: var(--color-dark);">Talk to Us</a>
     </div>
   </div>
 </section>
