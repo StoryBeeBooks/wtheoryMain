@@ -894,7 +894,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.5fr repeat(3, 1fr);
+  grid-template-columns: 1.5fr repeat(2, 1fr);
   gap: 48px;
   margin-bottom: 64px;
 }
