@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Waymark — Record, Transcribe, Analyze</title>
-<meta name="description" content="Waymark is an iPadOS productivity app for seminars, lectures, and meetings. Live transcription, real-time translation, AI-powered analysis, and PDF export — all in one app.">
+<title>Waymark — 录音、转录、分析</title>
+<meta name="description" content="Waymark 是一款专为 iPadOS 设计的生产力应用，适用于研讨会、讲座和会议。实时转录、实时翻译、AI 驱动分析和 PDF 导出 — 一应俱全。">
 <link rel="stylesheet" href="/css/style.css">
 <style>
 /* ============================================================
@@ -763,7 +763,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 .step__connector {
-  display: none; /* TODO: SVG connector line between steps */
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -1293,164 +1293,6 @@ button { cursor: pointer; font-family: inherit; border: none; }
 }
 
 /* ============================================================
-   TESTIMONIAL
-   ============================================================ */
-.testimonial-card {
-  max-width: 680px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 48px 40px;
-  background: var(--color-surface);
-  border-radius: var(--radius-2xl);
-  border: 1px solid var(--color-border-light);
-  box-shadow: var(--shadow-md);
-}
-
-.testimonial-card__stars {
-  font-size: 20px;
-  color: #FFD60A;
-  margin-bottom: 20px;
-  letter-spacing: 4px;
-}
-
-.testimonial-card__quote {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.5;
-  color: var(--color-text);
-  font-style: italic;
-  margin-bottom: 24px;
-}
-
-.testimonial-card__author {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.testimonial-card__role {
-  font-size: 13px;
-  color: var(--color-text-tertiary);
-  margin-top: 4px;
-}
-
-/* ============================================================
-   INLINE METRIC CALLOUT
-   ============================================================ */
-.metric-callouts {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-
-.metric-callout {
-  text-align: center;
-  padding: 32px 20px;
-  background: var(--color-surface);
-  border-radius: var(--radius-xl);
-  border: 1px solid var(--color-border-light);
-}
-
-.metric-callout__value {
-  font-size: 36px;
-  font-weight: 700;
-  color: var(--color-accent);
-  letter-spacing: -0.02em;
-}
-
-.metric-callout__label {
-  font-size: 14px;
-  color: var(--color-text-secondary);
-  margin-top: 4px;
-}
-
-@media (max-width: 600px) {
-  .metric-callouts {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ============================================================
-   VIDEO PLACEHOLDER
-   ============================================================ */
-.video-placeholder {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background: linear-gradient(145deg, #222 0%, #1a1a1c 100%);
-  border-radius: var(--radius-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.video-placeholder__play {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition-base);
-  border: 2px solid rgba(255,255,255,0.2);
-}
-
-.video-placeholder:hover .video-placeholder__play {
-  background: rgba(255,255,255,0.25);
-  transform: scale(1.05);
-}
-
-.video-placeholder__play svg {
-  width: 24px;
-  height: 24px;
-  fill: #fff;
-  margin-left: 3px;
-}
-
-.video-placeholder__label {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.5);
-}
-
-/* ============================================================
-   DETAIL TABS
-   ============================================================ */
-.detail-tabs {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  margin-bottom: 48px;
-  flex-wrap: wrap;
-}
-
-.detail-tab {
-  padding: 10px 24px;
-  border-radius: 980px;
-  font-size: 14px;
-  font-weight: 600;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border-light);
-  color: var(--color-text-secondary);
-  transition: all var(--transition-fast);
-  cursor: default;
-}
-
-.detail-tab--active {
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #fff;
-}
-
-/* ============================================================
    APPLE PENCIL BANNER
    ============================================================ */
 .pencil-banner {
@@ -1528,22 +1370,22 @@ button { cursor: pointer; font-family: inherit; border: none; }
   <div class="container">
     <div class="hero__badge">
       <span class="hero__badge-dot"></span>
-      Designed exclusively for iPad
+      专为 iPad 设计
     </div>
     <h1 class="heading-hero hero__title">
-      Record. Transcribe.<br><span class="hero__title-accent">Analyze.</span>
+      录音。转录。<br><span class="hero__title-accent">分析。</span>
     </h1>
     <p class="text-lg hero__subtitle">
-      Waymark is the all-in-one iPadOS productivity app that captures spoken content in real time, translates it across languages, and turns it into actionable intelligence — all from your iPad.
+      Waymark 是一款全能的 iPadOS 生产力应用，能够实时捕获语音内容、跨语言翻译，并将其转化为可操作的智能报告 — 一切尽在您的 iPad 上。
     </p>
     <div class="hero__actions">
       <a href="http://apps.apple.com/app/id6760979716" class="btn btn--primary btn--lg">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download for iPad
+        下载 iPad 版
       </a>
     </div>
-    <p class="hero__note">iPadOS 17.0+ required &nbsp;·&nbsp; No subscriptions &nbsp;·&nbsp; Free to start</p>
-    <p class="hero__note" style="margin-top: 8px;"><a href="/waymark-privacy-policy" style="color: var(--color-text-tertiary); text-decoration: underline;">Privacy Policy</a> &nbsp;·&nbsp; <a href="/waymark-terms-of-service" style="color: var(--color-text-tertiary); text-decoration: underline;">Terms of Service</a> &nbsp;·&nbsp; <a href="/waymark-zh" style="color: var(--color-text-tertiary); text-decoration: underline;">中文</a></p>
+    <p class="hero__note">需要 iPadOS 17.0 或更高版本 &nbsp;·&nbsp; 无订阅 &nbsp;·&nbsp; 免费开始</p>
+    <p class="hero__note" style="margin-top: 8px;"><a href="/waymark-privacy-policy" style="color: var(--color-text-tertiary); text-decoration: underline;">隐私政策</a> &nbsp;·&nbsp; <a href="/waymark-terms-of-service" style="color: var(--color-text-tertiary); text-decoration: underline;">服务条款</a> &nbsp;·&nbsp; <a href="/waymark" style="color: var(--color-text-tertiary); text-decoration: underline;">English</a></p>
   </div>
   <div class="hero__visual">
     <video autoplay muted loop playsinline style="width: 100%; border-radius: var(--radius-2xl); box-shadow: var(--shadow-xl);">
@@ -1558,19 +1400,19 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="trust">
   <div class="container">
     <div class="trust__inner">
-      <p class="trust__label">WHY PROFESSIONALS CHOOSE WAYMARK</p>
+      <p class="trust__label">专业人士选择 WAYMARK 的理由</p>
       <div class="trust__badges" style="flex-wrap: nowrap; justify-content: center;">
         <div class="trust__badge" style="flex: 1; justify-content: center; text-align: center;">
-          No Subscriptions
+          无订阅
         </div>
         <div class="trust__badge" style="flex: 1; justify-content: center; text-align: center;">
-          100% On-Device Storage
+          100% 本地存储
         </div>
         <div class="trust__badge" style="flex: 1; justify-content: center; text-align: center;">
-          15 Languages
+          15 种语言
         </div>
         <div class="trust__badge" style="flex: 1; justify-content: center; text-align: center;">
-          Apple Pencil Ready
+          支持 Apple Pencil
         </div>
       </div>
     </div>
@@ -1583,9 +1425,9 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section">
   <div class="container">
     <div class="section__header">
-      <span class="label">See Waymark in Action</span>
-      <h2 class="heading-xl">One app. Every spoken word<br>captured and understood.</h2>
-      <p class="text-lg">Watch how Waymark transforms any seminar, lecture, or meeting into a complete, searchable, and analyzed record.</p>
+      <span class="label">观看 Waymark 演示</span>
+      <h2 class="heading-xl">一款应用，每一句话<br>都被捕获和理解。</h2>
+      <p class="text-lg">观看 Waymark 如何将任何研讨会、讲座或会议转化为完整的、可搜索的、经过分析的记录。</p>
     </div>
     <video autoplay muted loop playsinline style="width: 100%; border-radius: var(--radius-2xl); box-shadow: var(--shadow-xl);">
       <source src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Waymark%20Preview2.mp4" type="video/mp4">
@@ -1599,52 +1441,52 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section section--alt" id="features">
   <div class="container">
     <div class="section__header">
-      <span class="label">Features</span>
-      <h2 class="heading-xl">Everything you need to capture,<br>understand, and share.</h2>
-      <p class="text-lg">Six powerful capabilities, seamlessly integrated into one beautifully designed iPad experience.</p>
+      <span class="label">功能</span>
+      <h2 class="heading-xl">捕获、理解和分享<br>所需的一切。</h2>
+      <p class="text-lg">六大强大功能，无缝集成于一个精美设计的 iPad 体验中。</p>
     </div>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-card__icon feature-card__icon--blue">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
         </div>
-        <h3 class="feature-card__title">Live Transcription</h3>
-        <p class="feature-card__desc">AI-powered speech-to-text that converts spoken words to text in real time, supporting 15 languages with professional-grade accuracy.</p>
+        <h3 class="feature-card__title">实时转录</h3>
+        <p class="feature-card__desc">AI 驱动的语音转文字技术，实时将语音转换为文字，支持 15 种语言，具有专业级准确度。</p>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon feature-card__icon--green">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         </div>
-        <h3 class="feature-card__title">Real-Time Translation</h3>
-        <p class="feature-card__desc">Instantly translate transcribed text into 13 languages as the speaker talks. Break every language barrier, sentence by sentence.</p>
+        <h3 class="feature-card__title">实时翻译</h3>
+        <p class="feature-card__desc">在演讲者讲话的同时，即时将转录文本翻译成 13 种语言。逐句打破所有语言障碍。</p>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon feature-card__icon--purple">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
         </div>
-        <h3 class="feature-card__title">Intelligence Consultant</h3>
-        <p class="feature-card__desc">AI-powered post-session analysis that summarizes key points, identifies action items, and generates comprehensive reports from your content.</p>
+        <h3 class="feature-card__title">智能顾问</h3>
+        <p class="feature-card__desc">AI 驱动的会后分析，总结要点、识别行动项目，并根据您的内容生成全面的报告。</p>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon feature-card__icon--orange">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         </div>
-        <h3 class="feature-card__title">Rich Note-Taking</h3>
-        <p class="feature-card__desc">A powerful notes editor with inline images, freehand drawing, and annotation — all right alongside your live transcript.</p>
+        <h3 class="feature-card__title">丰富笔记</h3>
+        <p class="feature-card__desc">强大的笔记编辑器，支持内嵌图片、手绘和批注 — 与实时转录并排显示。</p>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon feature-card__icon--pink">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         </div>
-        <h3 class="feature-card__title">Camera &amp; Annotation</h3>
-        <p class="feature-card__desc">Snap photos of slides, whiteboards, or documents during a session. Annotate with Apple Pencil and include them in your AI analysis.</p>
+        <h3 class="feature-card__title">拍照与批注</h3>
+        <p class="feature-card__desc">在会议中拍摄幻灯片、白板或文件的照片。使用 Apple Pencil 进行批注，并将其纳入 AI 分析。</p>
       </div>
       <div class="feature-card">
         <div class="feature-card__icon feature-card__icon--teal">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
-        <h3 class="feature-card__title">PDF Export</h3>
-        <p class="feature-card__desc">Export beautifully styled PDF reports with your transcript, translations, notes, photos, and AI analysis — ready to share anywhere.</p>
+        <h3 class="feature-card__title">PDF 导出</h3>
+        <p class="feature-card__desc">导出精美排版的 PDF 报告，包含转录、翻译、笔记、照片和 AI 分析 — 随时随地分享。</p>
       </div>
     </div>
   </div>
@@ -1657,30 +1499,30 @@ button { cursor: pointer; font-family: inherit; border: none; }
   <div class="container">
     <div class="feature-deep">
       <div class="feature-deep__content">
-        <span class="label">Live Transcription</span>
-        <h2 class="heading-lg">Every word, captured<br>as it's spoken.</h2>
-        <p class="text-lg">Waymark streams audio from your iPad's microphone to an AI-powered speech engine in real time. Words appear on screen as fast as they're spoken — no waiting, no manual effort.</p>
+        <span class="label">实时转录</span>
+        <h2 class="heading-lg">每一个字，<br>说出即捕获。</h2>
+        <p class="text-lg">Waymark 将 iPad 麦克风的音频实时传输到 AI 语音引擎。文字在屏幕上与语音同步显示 — 无需等待，无需手动操作。</p>
         <ul class="feature-deep__list">
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>15 languages supported</strong> — English, Korean, Chinese, Japanese, Spanish, French, German, Portuguese, Italian, Dutch, Russian, Hindi, Arabic, Turkish, and Indonesian</span>
+            <span><strong>支持 15 种语言</strong> — 英语、韩语、中文、日语、西班牙语、法语、德语、葡萄牙语、意大利语、荷兰语、俄语、印地语、阿拉伯语、土耳其语和印尼语</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Side-by-side display</strong> — Original and translated text displayed together for easy comparison</span>
+            <span><strong>并排显示</strong> — 原文和译文并排展示，便于对照</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Zero audio stored</strong> — Audio is processed in real time and never stored on any server</span>
+            <span><strong>零音频存储</strong> — 音频实时处理，绝不存储在任何服务器上</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Designed for long sessions</strong> — Optimized for 10–40+ minute seminars, lectures, and meetings</span>
+            <span><strong>专为长时间会议设计</strong> — 针对 10–40 分钟以上的研讨会、讲座和会议进行优化</span>
           </li>
         </ul>
       </div>
       <div class="feature-deep__visual">
-        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview3.png" alt="Waymark Live Transcription" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview3.png" alt="Waymark 实时转录" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
       </div>
     </div>
   </div>
@@ -1693,26 +1535,26 @@ button { cursor: pointer; font-family: inherit; border: none; }
   <div class="container">
     <div class="feature-deep feature-deep--reverse">
       <div class="feature-deep__content">
-        <span class="label">Intelligence Consultant</span>
-        <h2 class="heading-lg">Your personal analyst,<br>powered by AI.</h2>
-        <p class="text-lg">After a session, tap "Analyze" to send your transcript, notes, and photos to Waymark's Intelligence Consultant. It returns a comprehensive report with summaries, key themes, action items, and insights.</p>
+        <span class="label">智能顾问</span>
+        <h2 class="heading-lg">您的私人分析师，<br>由 AI 驱动。</h2>
+        <p class="text-lg">会议结束后，点击"分析"即可将您的转录、笔记和照片发送给 Waymark 的智能顾问。它会返回包含摘要、关键主题、行动项目和见解的综合报告。</p>
         <ul class="feature-deep__list">
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Multimodal analysis</strong> — Analyzes text transcripts, handwritten notes, and up to 5 photos in a single request</span>
+            <span><strong>多模态分析</strong> — 在单个请求中分析文字转录、手写笔记和最多 5 张照片</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Choose your report language</strong> — Get your analysis in English, Korean, or Chinese regardless of the source content</span>
+            <span><strong>选择报告语言</strong> — 无论源内容是什么语言，都可以获得英语、韩语或中文的分析报告</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Scrollable history</strong> — View all past analyses for a session, with the latest always at the top</span>
+            <span><strong>可滚动历史记录</strong> — 查看某次会议的所有历史分析，最新的始终显示在顶部</span>
           </li>
         </ul>
       </div>
       <div class="feature-deep__visual">
-        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview4.png" alt="Waymark Intelligence Consultant" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview4.png" alt="Waymark 智能顾问" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
       </div>
     </div>
   </div>
@@ -1725,45 +1567,45 @@ button { cursor: pointer; font-family: inherit; border: none; }
   <div class="container">
     <div class="feature-deep">
       <div class="feature-deep__content">
-        <span class="label">Rich Note-Taking &amp; Camera</span>
-        <h2 class="heading-lg">Write, draw, and<br>capture — side by side.</h2>
-        <p class="text-lg">Waymark's split-screen layout puts your live transcript on the left and a rich notes editor on the right. Add typed notes, freehand drawings, and inline photos — all within the same session.</p>
+        <span class="label">丰富笔记与拍照</span>
+        <h2 class="heading-lg">书写、绘图、<br>拍摄 — 并排进行。</h2>
+        <p class="text-lg">Waymark 的分屏布局在左侧显示实时转录，右侧显示丰富的笔记编辑器。在同一个会议中添加文字笔记、手绘和内嵌照片。</p>
         <ul class="feature-deep__list">
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Split-screen design</strong> — Live transcript and notes visible simultaneously in landscape mode</span>
+            <span><strong>分屏设计</strong> — 横屏模式下实时转录和笔记同时可见</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Apple Pencil support</strong> — Draw diagrams, underline key points, and annotate photos with precision</span>
+            <span><strong>Apple Pencil 支持</strong> — 绘制图表、标记要点、精确批注照片</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Inline camera capture</strong> — Snap slides, whiteboards, or documents without leaving the session</span>
+            <span><strong>内嵌拍照</strong> — 无需离开会议即可拍摄幻灯片、白板或文件</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Photo annotation</strong> — Draw directly on captured images using PencilKit, then include them in AI analysis</span>
+            <span><strong>照片批注</strong> — 使用 PencilKit 直接在照片上绘图，然后纳入 AI 分析</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Resizable images</strong> — Photos in notes can be resized to fit your layout, and sizes persist between sessions</span>
+            <span><strong>可调整图片大小</strong> — 笔记中的照片可调整大小以适应布局，且在不同会议间保持一致</span>
           </li>
         </ul>
       </div>
       <div class="feature-deep__visual">
-        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview1.png" alt="Waymark Rich Notes and Camera" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview1.png" alt="Waymark 丰富笔记与拍照" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
       </div>
     </div>
 
     <!-- Apple Pencil Banner -->
     <div class="pencil-banner" style="margin-top: 64px;">
       <div class="pencil-banner__content">
-        <h3>Designed for Apple Pencil</h3>
-        <p>Waymark uses PencilKit, the same technology behind Apple Notes and Freeform. Draw, sketch, annotate, and mark up photos with pixel-perfect precision, ultra-low latency, and palm rejection.</p>
+        <h3>专为 Apple Pencil 设计</h3>
+        <p>Waymark 使用 PencilKit，与 Apple 备忘录和无边记相同的技术。以像素级精度、超低延迟和掌部拒绝功能进行绘图、素描、批注和标记。</p>
       </div>
       <div class="pencil-banner__visual" style="background: none; border: none;">
-        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/creative-illustrator-working-devices.jpg" alt="Apple Pencil illustration" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl);">
+        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/creative-illustrator-working-devices.jpg" alt="Apple Pencil 使用场景" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl);">
       </div>
     </div>
   </div>
@@ -1776,26 +1618,26 @@ button { cursor: pointer; font-family: inherit; border: none; }
   <div class="container">
     <div class="feature-deep feature-deep--reverse">
       <div class="feature-deep__content">
-        <span class="label">PDF Export</span>
-        <h2 class="heading-lg">Beautiful reports,<br>ready to share.</h2>
-        <p class="text-lg">Turn any session into a polished, professional PDF with full control over what's included. Share via AirDrop, email, Files, or any app that accepts documents.</p>
+        <span class="label">PDF 导出</span>
+        <h2 class="heading-lg">精美报告，<br>随时分享。</h2>
+        <p class="text-lg">将任何会议转化为精美、专业的 PDF，完全控制包含的内容。通过 AirDrop、电子邮件、文件应用或任何支持文档的应用分享。</p>
         <ul class="feature-deep__list">
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Choose your sections</strong> — Include or exclude transcript, translation, notes, photos, and AI report</span>
+            <span><strong>选择包含内容</strong> — 自由选择是否包含转录、翻译、笔记、照片和 AI 报告</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Styled and formatted</strong> — Professional layout with clean typography and organized sections</span>
+            <span><strong>精美排版</strong> — 专业布局，干净的排版和有序的章节</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>You own your content</strong> — Everything you create in Waymark is yours to use, share, and distribute freely</span>
+            <span><strong>内容归您所有</strong> — 您在 Waymark 中创建的所有内容都属于您，可自由使用、分享和分发</span>
           </li>
         </ul>
       </div>
       <div class="feature-deep__visual">
-        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview6.png" alt="Waymark PDF Export" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview6.png" alt="Waymark PDF 导出" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
       </div>
     </div>
   </div>
@@ -1808,30 +1650,30 @@ button { cursor: pointer; font-family: inherit; border: none; }
   <div class="container">
     <div class="feature-deep">
       <div class="feature-deep__content">
-        <span class="label">Session Management</span>
-        <h2 class="heading-lg">Every session, organized<br>and searchable.</h2>
-        <p class="text-lg">Your sessions are displayed as elegant glass-style cards with search, sort, and star functionality. Find any session instantly, and keep your most important ones front and center.</p>
+        <span class="label">会议管理</span>
+        <h2 class="heading-lg">每次会议，<br>井然有序，轻松搜索。</h2>
+        <p class="text-lg">您的会议以精美的毛玻璃风格卡片展示，支持搜索、排序和收藏功能。即时找到任何会议，将最重要的会议置于最前方。</p>
         <ul class="feature-deep__list">
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Glass card design</strong> — Sessions displayed as elegant translucent cards with session details</span>
+            <span><strong>毛玻璃卡片设计</strong> — 会议以优雅的半透明卡片展示，包含会议详情</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Search &amp; sort</strong> — Find any session by title or content. Sort by date, name, or featured status</span>
+            <span><strong>搜索与排序</strong> — 按标题或内容查找任何会议，按日期、名称或收藏状态排序</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>Star &amp; feature</strong> — Mark important sessions as featured for quick access on your home screen</span>
+            <span><strong>收藏与置顶</strong> — 将重要会议标记为精选，在主屏幕上快速访问</span>
           </li>
           <li>
             <span class="feature-deep__list-icon">✓</span>
-            <span><strong>iCloud backup</strong> — Session data is included in your iPad's iCloud backup for peace of mind</span>
+            <span><strong>iCloud 备份</strong> — 会议数据包含在 iPad 的 iCloud 备份中，让您安心无忧</span>
           </li>
         </ul>
       </div>
       <div class="feature-deep__visual">
-        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview2.png" alt="Waymark Session Management" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
+        <img src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Preview2.png" alt="Waymark 会议管理" style="width: 100%; border-radius: var(--radius-xl); box-shadow: var(--shadow-md);">
       </div>
     </div>
   </div>
@@ -1843,14 +1685,14 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section section--alt" id="dashboard">
   <div class="container">
     <div class="section__header">
-      <span class="label">Beautiful Dashboard</span>
-      <h2 class="heading-xl">Your home base,<br>your way.</h2>
-      <p class="text-lg">Waymark greets you with a beautifully themed dashboard featuring ambient animations, your personal stats, and a customizable quote.</p>
+      <span class="label">精美仪表盘</span>
+      <h2 class="heading-xl">您的大本营，<br>随心定制。</h2>
+      <p class="text-lg">Waymark 以精美的主题仪表盘迎接您，配有环境动画、个人统计数据和可自定义的格言。</p>
     </div>
     <div class="dashboard-showcase">
       <div class="dashboard-card dashboard-card--wide">
-        <div class="dashboard-card__title">6 Handcrafted Themes</div>
-        <div class="dashboard-card__desc">Choose from six unique home screen themes, each with its own background, text positioning, color palette, and ambient cloud animations. Browse and switch instantly with the filmstrip selector.</div>
+        <div class="dashboard-card__title">6 款精心设计的主题</div>
+        <div class="dashboard-card__desc">从六款独特的主屏幕主题中选择，每款都有自己的背景、文字位置、配色方案和环境云动画。使用胶片条选择器即时浏览和切换。</div>
         <div class="dashboard-card__visual" style="background: none; aspect-ratio: auto;">
           <video autoplay muted loop playsinline style="width: 100%; border-radius: var(--radius-md);">
             <source src="https://assets.wtheory.com/wtheoryMainSite%20Assets/Main%20Page/Waymark%20Preview1.mp4" type="video/mp4">
@@ -1867,30 +1709,30 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section" id="how-it-works">
   <div class="container">
     <div class="section__header">
-      <span class="label">How It Works</span>
-      <h2 class="heading-xl">From spoken word to<br>polished report in four steps.</h2>
-      <p class="text-lg">Waymark is designed so every part of your workflow — from capturing to analyzing — happens in one seamless experience.</p>
+      <span class="label">使用方法</span>
+      <h2 class="heading-xl">从语音到精美报告，<br>四步完成。</h2>
+      <p class="text-lg">Waymark 的设计让工作流的每个环节 — 从捕获到分析 — 都在一个无缝体验中完成。</p>
     </div>
     <div class="steps">
       <div class="step">
         <div class="step__number">1</div>
-        <h3 class="step__title">Start a Session</h3>
-        <p class="step__desc">Create a new session and tap record. Waymark connects to the cloud transcription engine and begins capturing speech immediately.</p>
+        <h3 class="step__title">开始会议</h3>
+        <p class="step__desc">创建新会议并点击录制。Waymark 连接到云端转录引擎，立即开始捕获语音。</p>
       </div>
       <div class="step">
         <div class="step__number">2</div>
-        <h3 class="step__title">Capture Everything</h3>
-        <p class="step__desc">Watch the transcript appear in real time on the left, while you take rich notes, draw diagrams, and snap photos on the right.</p>
+        <h3 class="step__title">捕获一切</h3>
+        <p class="step__desc">在左侧观看实时转录，同时在右侧记录丰富笔记、绘制图表和拍摄照片。</p>
       </div>
       <div class="step">
         <div class="step__number">3</div>
-        <h3 class="step__title">Analyze with AI</h3>
-        <p class="step__desc">Tap "Analyze" to send your full session — transcript, notes, and photos — to Waymark's Intelligence Consultant for a comprehensive report.</p>
+        <h3 class="step__title">AI 分析</h3>
+        <p class="step__desc">点击"分析"将完整会议 — 转录、笔记和照片 — 发送给 Waymark 的智能顾问，获取全面报告。</p>
       </div>
       <div class="step">
         <div class="step__number">4</div>
-        <h3 class="step__title">Export &amp; Share</h3>
-        <p class="step__desc">Generate a professionally styled PDF choosing exactly which sections to include, then share it via AirDrop, email, or save to Files.</p>
+        <h3 class="step__title">导出与分享</h3>
+        <p class="step__desc">生成专业排版的 PDF，精确选择要包含的内容，然后通过 AirDrop、电子邮件分享或保存到文件。</p>
       </div>
     </div>
   </div>
@@ -1902,73 +1744,73 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section section--alt" id="use-cases">
   <div class="container">
     <div class="section__header">
-      <span class="label">Use Cases</span>
-      <h2 class="heading-xl">Built for every scenario<br>where words matter.</h2>
-      <p class="text-lg">Whether you're in a conference hall, a classroom, a boardroom, or a courtroom — Waymark captures, translates, and analyzes what's said so you can focus on what matters.</p>
+      <span class="label">应用场景</span>
+      <h2 class="heading-xl">为每一个<br>语言至关重要的场景而生。</h2>
+      <p class="text-lg">无论您身处会议厅、教室、董事会还是法庭 — Waymark 捕获、翻译和分析所说的每一句话，让您专注于重要的事情。</p>
     </div>
     <div class="use-cases">
       <div class="use-case">
         <div class="use-case__image">
-          <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80" alt="Seminars and Conferences" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80" alt="研讨会与会议" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="use-case__content">
-          <span class="use-case__tag">Education</span>
-          <h3 class="use-case__title">Seminars &amp; Conferences</h3>
-          <p class="use-case__desc">Capture keynotes and panel discussions in real time. Snap photos of presentation slides, then generate an AI report that summarizes key takeaways and action items from the entire event.</p>
+          <span class="use-case__tag">教育</span>
+          <h3 class="use-case__title">研讨会与会议</h3>
+          <p class="use-case__desc">实时捕获主题演讲和小组讨论。拍摄演示幻灯片的照片，然后生成 AI 报告，总结整个活动的关键要点和行动项目。</p>
         </div>
       </div>
       <div class="use-case">
         <div class="use-case__image">
-          <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80" alt="Important Meetings" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?w=800&q=80" alt="重要会面" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="use-case__content">
-          <span class="use-case__tag">Personal</span>
-          <h3 class="use-case__title">Important Meetings</h3>
-          <p class="use-case__desc">Keep a detailed record of medical appointments, legal consultations, insurance calls, and other high-stakes conversations. Capture every word so you can review what was said at your own pace.</p>
+          <span class="use-case__tag">个人</span>
+          <h3 class="use-case__title">重要会面</h3>
+          <p class="use-case__desc">详细记录医疗预约、法律咨询、保险通话和其他重要对话。捕获每一句话，以便按自己的节奏回顾。</p>
         </div>
       </div>
       <div class="use-case">
         <div class="use-case__image">
-          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80" alt="Business Meetings" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800&q=80" alt="商务会议" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="use-case__content">
-          <span class="use-case__tag">Business</span>
-          <h3 class="use-case__title">Business Meetings</h3>
-          <p class="use-case__desc">Never miss a detail in client calls, team standups, or board meetings. Waymark's AI Intelligence identifies decisions, action items, and follow-ups so nothing falls through the cracks.</p>
+          <span class="use-case__tag">商务</span>
+          <h3 class="use-case__title">商务会议</h3>
+          <p class="use-case__desc">在客户通话、团队站会或董事会议中不遗漏任何细节。Waymark 的 AI 智能识别决策、行动项目和后续跟进，确保万无一失。</p>
         </div>
       </div>
       <div class="use-case">
         <div class="use-case__image">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="Multilingual Events" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="多语言活动" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="use-case__content">
-          <span class="use-case__tag">International</span>
-          <h3 class="use-case__title">Multilingual Events</h3>
-          <p class="use-case__desc">Attend a talk in Japanese, see the transcript in real time, and read the translation in English — all simultaneously. Cross-language understanding made effortless.</p>
+          <span class="use-case__tag">国际</span>
+          <h3 class="use-case__title">多语言活动</h3>
+          <p class="use-case__desc">参加一场日语演讲，实时看到转录文本，同时阅读英文翻译 — 所有这些同步进行。跨语言理解变得毫不费力。</p>
         </div>
       </div>
       <div class="use-case">
         <div class="use-case__image">
-          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80" alt="Training and Workshops" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80" alt="培训与工作坊" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="use-case__content">
-          <span class="use-case__tag">Professional</span>
-          <h3 class="use-case__title">Training &amp; Workshops</h3>
-          <p class="use-case__desc">Capture training content, photograph process diagrams, and generate comprehensive documentation. Export polished PDFs for your team to reference anytime.</p>
+          <span class="use-case__tag">专业</span>
+          <h3 class="use-case__title">培训与工作坊</h3>
+          <p class="use-case__desc">捕获培训内容、拍摄流程图，并生成全面的文档。导出精美的 PDF 供团队随时参考。</p>
         </div>
       </div>
       <div class="use-case">
         <div class="use-case__image">
-          <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=800&q=80" alt="Research and Interviews" style="width: 100%; height: 100%; object-fit: cover;">
+          <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=800&q=80" alt="研究与访谈" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="use-case__content">
-          <span class="use-case__tag">Research</span>
-          <h3 class="use-case__title">Research &amp; Interviews</h3>
-          <p class="use-case__desc">Conduct research interviews with a full live transcript. Add observational notes alongside, then use AI analysis to identify recurring themes and insights across sessions.</p>
+          <span class="use-case__tag">研究</span>
+          <h3 class="use-case__title">研究与访谈</h3>
+          <p class="use-case__desc">通过完整的实时转录进行研究访谈。同时添加观察笔记，然后使用 AI 分析识别跨会议的重复主题和见解。</p>
         </div>
       </div>
     </div>
-    <p style="text-align: center; font-size: 13px; color: var(--color-text-tertiary); max-width: 700px; margin: 32px auto 0; line-height: 1.7;"><strong>Disclaimer:</strong> Waymark's transcription, translation, and AI analysis are powered by third-party services and may contain errors, omissions, or inaccuracies. Outputs should not be treated as verbatim records or relied upon as professional, legal, medical, or financial advice. Always verify important information independently. See our <a href="/waymark-terms-of-service" style="color: var(--color-text-secondary); text-decoration: underline;">Terms of Service</a> for full details.</p>
+    <p style="text-align: center; font-size: 13px; color: var(--color-text-tertiary); max-width: 700px; margin: 32px auto 0; line-height: 1.7;"><strong>免责声明：</strong>Waymark 的转录、翻译和 AI 分析由第三方服务提供支持，可能包含错误、遗漏或不准确之处。输出内容不应被视为逐字记录，也不应被依赖为专业、法律、医疗或财务建议。请始终独立核实重要信息。详情请参阅我们的<a href="/waymark-terms-of-service" style="color: var(--color-text-secondary); text-decoration: underline;">服务条款</a>。</p>
   </div>
 </section>
 
@@ -1978,59 +1820,59 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section" id="languages">
   <div class="container">
     <div class="section__header">
-      <span class="label">Global Reach</span>
-      <h2 class="heading-xl">Speak any language.<br>Understand every one.</h2>
-      <p class="text-lg">Waymark supports 15 transcription languages and 13 translation languages. The app interface itself is available in English, Korean, and Chinese — switchable at any time.</p>
+      <span class="label">全球覆盖</span>
+      <h2 class="heading-xl">说任何语言，<br>理解每一种。</h2>
+      <p class="text-lg">Waymark 支持 15 种转录语言和 13 种翻译语言。应用界面本身支持英语、韩语和中文 — 可随时切换。</p>
     </div>
 
     <div style="margin-bottom: 40px;">
-      <h3 class="heading-sm" style="text-align: center; margin-bottom: 20px;">Transcription Languages (15)</h3>
+      <h3 class="heading-sm" style="text-align: center; margin-bottom: 20px;">转录语言（15 种）</h3>
       <div class="languages-grid">
-        <span class="lang-pill"><span class="lang-pill__flag">🇺🇸</span> English</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇰🇷</span> Korean</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇨🇳</span> Chinese</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇯🇵</span> Japanese</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇪🇸</span> Spanish</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇫🇷</span> French</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇩🇪</span> German</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇵🇹</span> Portuguese</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇮🇹</span> Italian</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇳🇱</span> Dutch</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇷🇺</span> Russian</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇮🇳</span> Hindi</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇸🇦</span> Arabic</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇹🇷</span> Turkish</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇮🇩</span> Indonesian</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇺🇸</span> 英语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇰🇷</span> 韩语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇨🇳</span> 中文</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇯🇵</span> 日语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇪🇸</span> 西班牙语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇫🇷</span> 法语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇩🇪</span> 德语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇵🇹</span> 葡萄牙语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇹</span> 意大利语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇳🇱</span> 荷兰语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇷🇺</span> 俄语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇳</span> 印地语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇸🇦</span> 阿拉伯语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇹🇷</span> 土耳其语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇩</span> 印尼语</span>
       </div>
     </div>
 
     <div>
-      <h3 class="heading-sm" style="text-align: center; margin-bottom: 20px;">Translation Languages (13)</h3>
+      <h3 class="heading-sm" style="text-align: center; margin-bottom: 20px;">翻译语言（13 种）</h3>
       <div class="languages-grid">
-        <span class="lang-pill"><span class="lang-pill__flag">🇺🇸</span> English</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇰🇷</span> Korean</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇨🇳</span> Chinese</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇯🇵</span> Japanese</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇪🇸</span> Spanish</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇫🇷</span> French</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇩🇪</span> German</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇵🇹</span> Portuguese</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇮🇹</span> Italian</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇷🇺</span> Russian</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇸🇦</span> Arabic</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇮🇳</span> Hindi</span>
-        <span class="lang-pill"><span class="lang-pill__flag">🇮🇩</span> Indonesian</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇺🇸</span> 英语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇰🇷</span> 韩语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇨🇳</span> 中文</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇯🇵</span> 日语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇪🇸</span> 西班牙语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇫🇷</span> 法语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇩🇪</span> 德语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇵🇹</span> 葡萄牙语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇹</span> 意大利语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇷🇺</span> 俄语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇸🇦</span> 阿拉伯语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇳</span> 印地语</span>
+        <span class="lang-pill"><span class="lang-pill__flag">🇮🇩</span> 印尼语</span>
       </div>
     </div>
 
     <div style="margin-top: 48px; text-align: center;">
-      <h3 class="heading-sm" style="margin-bottom: 16px;">App Interface Languages</h3>
+      <h3 class="heading-sm" style="margin-bottom: 16px;">应用界面语言</h3>
       <div class="languages-grid">
         <span class="lang-pill" style="border-color: var(--color-accent); background: var(--color-accent-light);"><span class="lang-pill__flag">🇺🇸</span> English</span>
         <span class="lang-pill" style="border-color: var(--color-accent); background: var(--color-accent-light);"><span class="lang-pill__flag">🇰🇷</span> 한국어</span>
         <span class="lang-pill" style="border-color: var(--color-accent); background: var(--color-accent-light);"><span class="lang-pill__flag">🇨🇳</span> 中文</span>
       </div>
-      <p class="text-sm" style="margin-top: 12px;">Switch languages at any time from Settings — no app restart required.</p>
+      <p class="text-sm" style="margin-top: 12px;">随时在设置中切换语言 — 无需重启应用。</p>
     </div>
   </div>
 </section>
@@ -2041,47 +1883,41 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section section--dark" id="security">
   <div class="container">
     <div class="section__header">
-      <span class="label">Security &amp; Privacy</span>
-      <h2 class="heading-xl">Your data stays yours.<br>No exceptions.</h2>
-      <p class="text-lg">Everything you record, write, draw, and photograph in Waymark is stored only on your iPad. We never see your content, never store it on our servers, and never share it with anyone.</p>
+      <span class="label">安全与隐私</span>
+      <h2 class="heading-xl">您的数据归您所有，<br>没有例外。</h2>
+      <p class="text-lg">您在 Waymark 中录制、书写、绘制和拍摄的一切内容都仅存储在您的 iPad 上。我们从不查看您的内容，从不存储在服务器上，也从不与任何人分享。</p>
     </div>
     <div class="security-grid">
       <div class="security-card">
-        
-        <h3 class="security-card__title">Your Content Never Leaves Your iPad</h3>
-        <p class="security-card__desc">Transcripts, notes, drawings, photos, and reports are saved directly to your device. No cloud sync, no server copies. If you delete it, it's gone.</p>
+        <h3 class="security-card__title">内容绝不离开您的 iPad</h3>
+        <p class="security-card__desc">转录、笔记、绘图、照片和报告直接保存到您的设备。没有云同步，没有服务器副本。如果您删除它，它就彻底消失了。</p>
       </div>
       <div class="security-card">
-        
-        <h3 class="security-card__title">Audio Is Never Recorded</h3>
-        <p class="security-card__desc">Your voice is processed in real time and immediately discarded. No audio file is ever created, stored, or accessible to us or any third party.</p>
+        <h3 class="security-card__title">音频绝不被录制</h3>
+        <p class="security-card__desc">您的声音实时处理后立即丢弃。绝不会创建、存储任何音频文件，我们或任何第三方都无法访问。</p>
       </div>
       <div class="security-card">
-        
-        <h3 class="security-card__title">You Control When Data Is Shared</h3>
-        <p class="security-card__desc">Nothing is sent to the cloud unless you choose to. Transcription, translation, and analysis only happen when you tap the button. You decide what gets processed and when.</p>
+        <h3 class="security-card__title">您控制数据何时被共享</h3>
+        <p class="security-card__desc">除非您选择，否则不会向云端发送任何内容。转录、翻译和分析仅在您点击按钮时才会进行。您决定处理什么以及何时处理。</p>
       </div>
       <div class="security-card">
-        
-        <h3 class="security-card__title">No Tracking, No Ads, No Third Parties</h3>
-        <p class="security-card__desc">Waymark contains zero third-party SDKs, analytics trackers, or advertising code. The app is built entirely with Apple's own frameworks. Your usage data stays private.</p>
+        <h3 class="security-card__title">无追踪、无广告、无第三方</h3>
+        <p class="security-card__desc">Waymark 不包含任何第三方 SDK、分析追踪器或广告代码。应用完全使用 Apple 自有框架构建。您的使用数据保持私密。</p>
       </div>
       <div class="security-card">
-        
-        <h3 class="security-card__title">Sign In Securely with Apple</h3>
-        <p class="security-card__desc">Your account is protected by Apple's identity system. We never see your password, and you can use a private relay email so your real address stays hidden.</p>
+        <h3 class="security-card__title">使用 Apple 安全登录</h3>
+        <p class="security-card__desc">您的帐户受 Apple 身份系统保护。我们永远看不到您的密码，您可以使用私密中继电子邮件，隐藏真实地址。</p>
       </div>
       <div class="security-card">
-        
-        <h3 class="security-card__title">Delete Everything, Anytime</h3>
-        <p class="security-card__desc">Delete your account from Settings and all server-side data is permanently removed on the spot. No waiting period, no hidden backups, no questions asked.</p>
+        <h3 class="security-card__title">随时删除一切</h3>
+        <p class="security-card__desc">在设置中删除您的帐户，所有服务端数据将被立即永久删除。没有等待期，没有隐藏备份，无需任何理由。</p>
       </div>
     </div>
 
     <div style="max-width: 600px; margin: 64px auto 0; text-align: center;">
-      <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7;">We do not sell, rent, or share your personal information with third parties for any purpose. Your content belongs to you.</p>
+      <p style="font-size: 15px; color: rgba(255,255,255,0.55); line-height: 1.7;">我们不会出于任何目的出售、出租或与第三方分享您的个人信息。您的内容属于您。</p>
       <div style="margin-top: 24px;">
-        <a href="/waymark-privacy-policy" class="btn btn--sm" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);">Read Privacy Policy</a>
+        <a href="/waymark-privacy-policy" class="btn btn--sm" style="background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.15);">查看隐私政策</a>
       </div>
     </div>
   </div>
@@ -2093,112 +1929,109 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section" id="pricing">
   <div class="container">
     <div class="section__header">
-      <span class="label">Pricing</span>
-      <h2 class="heading-xl">Pay as you go.<br>No subscriptions. Ever.</h2>
-      <p class="text-lg">Start with free credits on signup, then purchase top-up packs only when you need them. No recurring charges, no auto-renewals, no commitments.</p>
+      <span class="label">价格</span>
+      <h2 class="heading-xl">按需付费，<br>永不订阅。</h2>
+      <p class="text-lg">注册即获免费额度，之后仅在需要时购买充值包。没有定期扣费，没有自动续订，没有承诺。</p>
     </div>
 
     <div class="pricing-intro">
       <div class="pricing-highlight">
-        Every new account gets free transcription, translation, and AI credits
+        每个新账户均可获得免费的转录、翻译和 AI 额度
       </div>
     </div>
 
     <div class="pricing-grid">
       <div class="pricing-card">
-        
-        <h3 class="pricing-card__name">Transcription</h3>
-        <p class="pricing-card__amount">60 minutes</p>
+        <h3 class="pricing-card__name">转录</h3>
+        <p class="pricing-card__amount">60 分钟</p>
         <div class="pricing-card__price">$2.99</div>
-        <p class="pricing-card__price-note">One-time purchase · USD</p>
+        <p class="pricing-card__price-note">一次性购买 · 美元</p>
         <ul class="pricing-card__features">
-          <li>60 minutes of live speech-to-text</li>
-          <li>15 transcription languages</li>
-          <li>Valid for 1 month after purchase</li>
-          <li>Stack multiple packs anytime</li>
+          <li>60 分钟实时语音转文字</li>
+          <li>15 种转录语言</li>
+          <li>购买后 1 个月内有效</li>
+          <li>随时叠加多个充值包</li>
         </ul>
       </div>
 
       <div class="pricing-card pricing-card--featured">
-        <div class="pricing-card__badge">Most Popular</div>
-        
-        <h3 class="pricing-card__name">Translation</h3>
-        <p class="pricing-card__amount">60 minutes</p>
+        <div class="pricing-card__badge">最受欢迎</div>
+        <h3 class="pricing-card__name">翻译</h3>
+        <p class="pricing-card__amount">60 分钟</p>
         <div class="pricing-card__price">$3.99</div>
-        <p class="pricing-card__price-note">One-time purchase · USD</p>
+        <p class="pricing-card__price-note">一次性购买 · 美元</p>
         <ul class="pricing-card__features">
-          <li>60 minutes of real-time translation</li>
-          <li>13 translation languages</li>
-          <li>Sentence-aware accuracy</li>
-          <li>Valid for 1 month after purchase</li>
+          <li>60 分钟实时翻译</li>
+          <li>13 种翻译语言</li>
+          <li>基于句子的精准翻译</li>
+          <li>购买后 1 个月内有效</li>
         </ul>
       </div>
 
       <div class="pricing-card">
-        
-        <h3 class="pricing-card__name">Intelligence Summary</h3>
-        <p class="pricing-card__amount">100 reports</p>
+        <h3 class="pricing-card__name">智能摘要</h3>
+        <p class="pricing-card__amount">100 份报告</p>
         <div class="pricing-card__price">$7.99</div>
-        <p class="pricing-card__price-note">One-time purchase · USD</p>
+        <p class="pricing-card__price-note">一次性购买 · 美元</p>
         <ul class="pricing-card__features">
-          <li>100 Intelligence Consultant analyses</li>
-          <li>Multimodal (text + photos)</li>
-          <li>Choose report language</li>
-          <li>Stack multiple packs anytime</li>
+          <li>100 次智能顾问分析</li>
+          <li>多模态（文字 + 照片）</li>
+          <li>选择报告语言</li>
+          <li>随时叠加多个充值包</li>
         </ul>
       </div>
     </div>
 
     <!-- Free vs Purchased comparison -->
     <div class="comparison">
-      <h3 class="heading-sm" style="text-align: center; margin-bottom: 24px;">Free vs. Purchased Account</h3>
+      <h3 class="heading-sm" style="text-align: center; margin-bottom: 24px;">免费版 vs. 付费版</h3>
       <table class="comparison__table">
         <thead>
           <tr>
-            <th>Feature</th>
-            <th>Free</th>
-            <th>Purchased</th>
+            <th>功能</th>
+            <th>免费</th>
+            <th>付费</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Live transcription</td>
-            <td>10 minutes</td>
+            <td>实时转录</td>
+            <td>10 分钟</td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td>Real-time translation</td>
-            <td>5 minutes</td>
+            <td>实时翻译</td>
+            <td>5 分钟</td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td>Intelligence summaries</td>
-            <td>2 reports</td>
+            <td>智能摘要</td>
+            <td>2 份报告</td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td>Rich notes &amp; camera</td>
+            <td>丰富笔记与拍照</td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
           </tr>
           <tr>
-            <td>PDF export</td>
-            <td>Watermarked</td>
-            <td>Clean (no watermark)</td>
+            <td>PDF 导出</td>
+            <td>带水印</td>
+            <td>无水印</td>
           </tr>
           <tr>
-            <td>Lifetime session cap</td>
-            <td>50 sessions</td>
-            <td>350 sessions</td>
+            <td>终身会议上限</td>
+            <td>50 次会议</td>
+            <td>350 次会议</td>
           </tr>
           <tr>
-            <td>Credit packs</td>
+            <td>额度充值包</td>
             <td><span class="cross">—</span></td>
-            <td>Buy anytime, stack freely</td>
+            <td>随时购买，自由叠加</td>
           </tr>
         </tbody>
       </table>
-      <p class="text-sm" style="text-align: center; margin-top: 16px;">All purchases are processed securely through the App Store. Prices shown in USD; your local currency may differ.</p>
+      <p class="text-sm" style="text-align: center; margin-top: 16px;">所有购买均通过 App Store 安全处理。价格以美元显示，您当地的货币可能有所不同。</p>
     </div>
   </div>
 </section>
@@ -2209,39 +2042,33 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section section--alt">
   <div class="container">
     <div class="section__header">
-      <span class="label">How Credits Work</span>
-      <h2 class="heading-xl">Simple, transparent,<br>and under your control.</h2>
+      <span class="label">额度说明</span>
+      <h2 class="heading-xl">简单、透明、<br>完全由您掌控。</h2>
     </div>
     <div class="features-grid" style="grid-template-columns: repeat(3, 1fr);">
       <div class="feature-card">
-        
-        <h3 class="feature-card__title">Buy When You Need</h3>
-        <p class="feature-card__desc">Purchase credit packs anytime — there are no subscriptions, no auto-renewals, and no commitments. Each pack adds credits to your balance instantly.</p>
+        <h3 class="feature-card__title">按需购买</h3>
+        <p class="feature-card__desc">随时购买额度充值包 — 没有订阅，没有自动续订，没有承诺。每个充值包即时添加到您的余额中。</p>
       </div>
       <div class="feature-card">
-        
-        <h3 class="feature-card__title">1-Month Validity</h3>
-        <p class="feature-card__desc">Each credit pack expires 1 month after purchase. This keeps pricing fair and sustainable. Plan your purchases around your upcoming events.</p>
+        <h3 class="feature-card__title">1 个月有效期</h3>
+        <p class="feature-card__desc">每个充值包在购买后 1 个月到期。这保持了定价的公平和可持续性。请根据即将到来的活动计划您的购买。</p>
       </div>
       <div class="feature-card">
-        
-        <h3 class="feature-card__title">First-In, First-Out</h3>
-        <p class="feature-card__desc">When you have multiple packs, the oldest credits are consumed first (FIFO). This ensures you always use what's closest to expiring before newer credits.</p>
+        <h3 class="feature-card__title">先进先出</h3>
+        <p class="feature-card__desc">当您拥有多个充值包时，最先购买的额度将最先使用（FIFO）。这确保您始终优先使用即将到期的额度。</p>
       </div>
       <div class="feature-card">
-        
-        <h3 class="feature-card__title">Stack Freely</h3>
-        <p class="feature-card__desc">Buy as many packs as you want. Each creates an independent balance with its own expiry. Preparing for a conference? Stock up before you go.</p>
+        <h3 class="feature-card__title">自由叠加</h3>
+        <p class="feature-card__desc">购买任意数量的充值包。每个包都有独立的余额和到期日。准备参加会议？提前备好额度。</p>
       </div>
       <div class="feature-card">
-        
-        <h3 class="feature-card__title">Account-Synced Balance</h3>
-        <p class="feature-card__desc">Your credit balance is tied to your account, not your device. Sign in on any iPad and your balance goes with you.</p>
+        <h3 class="feature-card__title">账户同步余额</h3>
+        <p class="feature-card__desc">您的额度余额绑定到账户，而不是设备。在任何 iPad 上登录，您的余额都会随您而行。</p>
       </div>
       <div class="feature-card">
-        
-        <h3 class="feature-card__title">Full Transparency</h3>
-        <p class="feature-card__desc">Check your remaining balance on the main screen. For a detailed breakdown with expiry dates, visit Settings → Usage Details at any time.</p>
+        <h3 class="feature-card__title">完全透明</h3>
+        <p class="feature-card__desc">在主屏幕查看剩余余额。如需含到期日的详细明细，随时前往设置 → 使用详情查看。</p>
       </div>
     </div>
   </div>
@@ -2253,117 +2080,117 @@ button { cursor: pointer; font-family: inherit; border: none; }
 <section class="section" id="faq">
   <div class="container">
     <div class="section__header">
-      <span class="label">FAQ</span>
-      <h2 class="heading-xl">Questions? Answered.</h2>
+      <span class="label">常见问题</span>
+      <h2 class="heading-xl">有疑问？已解答。</h2>
     </div>
     <div class="faq-list">
       <div class="faq-item">
         <details>
-          <summary>What is Waymark?</summary>
+          <summary>什么是 Waymark？</summary>
           <div class="faq-answer">
-            <p>Waymark is an iPadOS productivity app designed for seminars, lectures, meetings, and any scenario where you need to capture spoken content. It combines live speech-to-text transcription, real-time translation, rich note-taking with drawing and photo annotation, AI-powered session analysis, and PDF export — all in one app.</p>
+            <p>Waymark 是一款 iPadOS 生产力应用，专为研讨会、讲座、会议以及任何需要捕获语音内容的场景而设计。它将实时语音转文字、实时翻译、丰富的笔记（含绘图和照片批注）、AI 驱动的会议分析和 PDF 导出 — 集于一身。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>What devices does Waymark support?</summary>
+          <summary>Waymark 支持哪些设备？</summary>
           <div class="faq-answer">
-            <p>Waymark is designed exclusively for iPad running iPadOS 17.0 or later. It is optimized for landscape orientation and supports Apple Pencil for drawing and annotation. Waymark is not available on iPhone, Mac, or other platforms.</p>
+            <p>Waymark 专为运行 iPadOS 17.0 或更高版本的 iPad 设计。它针对横屏方向进行了优化，支持 Apple Pencil 进行绘图和批注。Waymark 不适用于 iPhone、Mac 或其他平台。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>Do I need an internet connection?</summary>
+          <summary>需要互联网连接吗？</summary>
           <div class="faq-answer">
-            <p>An internet connection is required for live transcription, translation, AI analysis, and purchasing credit packs. You can review existing sessions, edit notes, and browse your session list offline.</p>
+            <p>实时转录、翻译、AI 分析和购买额度充值包需要互联网连接。您可以在离线状态下查看现有会议、编辑笔记和浏览会议列表。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>Is there a subscription?</summary>
+          <summary>有订阅费吗？</summary>
           <div class="faq-answer">
-            <p>No. Waymark uses a pay-as-you-go model with consumable credit packs. There are no subscriptions, no auto-renewals, and no recurring charges. You purchase credits only when you need them.</p>
+            <p>没有。Waymark 采用按需付费模式，使用消耗性额度充值包。没有订阅、没有自动续订、没有定期扣费。您只在需要时购买额度。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>What do I get for free?</summary>
+          <summary>免费版包含什么？</summary>
           <div class="faq-answer">
-            <p>Every new account receives a one-time free allocation of transcription minutes, translation minutes, and AI analysis credits. This allocation expires 30 days after signup. All features are available — no artificial restrictions on free accounts except the watermark on PDF exports and a 50-session lifetime cap.</p>
+            <p>每个新账户都会获得一次性的免费转录分钟数、翻译分钟数和 AI 分析额度。该额度在注册后 30 天到期。所有功能均可使用 — 免费账户的唯一限制是 PDF 导出带水印和 50 次会议的终身上限。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>Do purchased credits expire?</summary>
+          <summary>购买的额度会过期吗？</summary>
           <div class="faq-answer">
-            <p>Yes. Each credit pack expires 1 month after the date of purchase. Credits are consumed on a first-in, first-out (FIFO) basis — the oldest credits are used first. Expired, unused credits are forfeited and cannot be refunded.</p>
+            <p>会的。每个充值包在购买日期后 1 个月到期。额度按先进先出（FIFO）原则使用 — 最先购买的额度最先被使用。到期未使用的额度将被作废，不予退款。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>Is my data private and secure?</summary>
+          <summary>我的数据是否安全和私密？</summary>
           <div class="faq-answer">
-            <p>Yes. All session content — transcripts, translations, notes, drawings, photos, and AI reports — is stored exclusively on your iPad. We never store your content on our servers. Audio is processed in real time and is not stored anywhere after transcription. All API communication is encrypted and cryptographically signed using Apple's App Attest.</p>
+            <p>是的。所有会议内容 — 转录、翻译、笔记、绘图、照片和 AI 报告 — 完全存储在您的 iPad 上。我们从不将您的内容存储在服务器上。音频实时处理后，不会存储在任何地方。所有 API 通信均经过加密并使用 Apple App Attest 进行加密签名。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>Is my audio recorded and stored on your servers?</summary>
+          <summary>我的音频是否会被录制并存储在你们的服务器上？</summary>
           <div class="faq-answer">
-            <p>No. Audio is streamed to our speech-to-text provider in real time during recording and is not stored — not on our servers, and not by the provider after processing. We never have access to your raw audio.</p>
+            <p>不会。音频在录制期间实时传输到我们的语音转文字提供商，处理后不会被存储 — 不在我们的服务器上，提供商处理后也不会保存。我们永远无法访问您的原始音频。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>When is my data sent to AI?</summary>
+          <summary>我的数据何时会被发送给 AI？</summary>
           <div class="faq-answer">
-            <p>Your session data is only sent when you explicitly tap the "Analyze" button. It is never sent automatically. You are always in control of when and what is shared with the AI service. The data sent includes your transcript text, notes text, and up to 5 photos from the session.</p>
+            <p>您的会议数据仅在您明确点击"分析"按钮时才会被发送。它永远不会自动发送。您始终可以控制何时以及共享什么内容给 AI 服务。发送的数据包括您的转录文本、笔记文本以及会议中最多 5 张照片。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>Can I use Waymark on multiple iPads?</summary>
+          <summary>我可以在多台 iPad 上使用 Waymark 吗？</summary>
           <div class="faq-answer">
-            <p>Yes. Sign in with the same Apple ID on any iPad and your credit balance syncs. However, session content is stored locally and does not sync between devices — each device has its own session library.</p>
+            <p>可以。在任何 iPad 上使用相同的 Apple ID 登录，您的额度余额会同步。但是，会议内容存储在本地，不会在设备之间同步 — 每台设备有自己的会议库。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>What happens if I delete the app?</summary>
+          <summary>如果我删除了应用会怎样？</summary>
           <div class="faq-answer">
-            <p>Uninstalling Waymark permanently deletes all session data from your iPad. This data cannot be recovered. Your server-side account (credit balances, purchase history) remains intact and will be available when you reinstall and sign in again.</p>
+            <p>卸载 Waymark 会永久删除 iPad 上的所有会议数据。此数据无法恢复。您的服务端帐户（额度余额、购买记录）将保持完整，当您重新安装并登录时仍可使用。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>How do I request a refund?</summary>
+          <summary>如何申请退款？</summary>
           <div class="faq-answer">
-            <p>All purchases are processed by Apple. To request a refund, visit <a href="https://reportaproblem.apple.com" rel="noopener" target="_blank" style="color: var(--color-accent);">reportaproblem.apple.com</a> or contact Apple Support. We do not process refunds directly.</p>
+            <p>所有购买均由 Apple 处理。要申请退款，请访问 <a href="https://reportaproblem.apple.com" rel="noopener" target="_blank" style="color: var(--color-accent);">reportaproblem.apple.com</a> 或联系 Apple 支持。我们不直接处理退款。</p>
           </div>
         </details>
       </div>
       <div class="faq-item">
         <details>
-          <summary>How do I delete my account?</summary>
+          <summary>如何删除我的账户？</summary>
           <div class="faq-answer">
-            <p>Go to Settings → Delete Account within the app. This immediately and permanently deletes all your server-side data, including authentication records, credit balances, purchase history, usage logs, and security keys.</p>
+            <p>在应用内前往设置 → 删除帐户。这将立即永久删除您所有的服务端数据，包括身份验证记录、额度余额、购买记录、使用日志和安全密钥。</p>
           </div>
         </details>
       </div>
     </div>
     <div style="text-align: center; margin-top: 40px;">
-      <a href="/waymark-support" class="btn btn--secondary">View Full Help Center →</a>
+      <a href="/waymark-support" class="btn btn--secondary">查看完整帮助中心 →</a>
     </div>
   </div>
 </section>
@@ -2373,15 +2200,15 @@ button { cursor: pointer; font-family: inherit; border: none; }
      ============================================================ -->
 <section class="cta-banner">
   <div class="container">
-    <h2 class="heading-xl">Ready to capture every word<br>that matters?</h2>
-    <p class="text-lg">Download Waymark for free. Start transcribing, translating, and analyzing your next session in minutes.</p>
+    <h2 class="heading-xl">准备好捕获每一句<br>重要的话了吗？</h2>
+    <p class="text-lg">免费下载 Waymark。几分钟内即可开始转录、翻译和分析您的下一次会议。</p>
     <div class="cta-banner__actions">
       <a href="http://apps.apple.com/app/id6760979716" class="btn btn--primary btn--lg">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        Download for iPad
+        下载 iPad 版
       </a>
     </div>
-    <p style="margin-top: 20px; font-size: 13px; color: var(--color-text-tertiary);">iPadOS 17.0+ &nbsp;·&nbsp; Free to start &nbsp;·&nbsp; No subscription required</p>
+    <p style="margin-top: 20px; font-size: 13px; color: var(--color-text-tertiary);">需要 iPadOS 17.0 或更高版本 &nbsp;·&nbsp; 免费开始 &nbsp;·&nbsp; 无需订阅</p>
   </div>
 </section>
 
