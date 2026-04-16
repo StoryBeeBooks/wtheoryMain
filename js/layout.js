@@ -59,10 +59,16 @@
     if (targets.length === 0) return;
 
     targets.forEach(function (t) {
-      t.style.overflow = 'hidden';
+      if (window.innerWidth > 768) {
+        t.style.overflow = 'hidden';
+      }
     });
 
     var ticking = false;
+
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
 
     function onScroll() {
       if (!ticking) {
@@ -73,6 +79,20 @@
 
     function update() {
       ticking = false;
+
+      if (isMobile()) {
+        targets.forEach(function (t) {
+          t.style.marginLeft = '0px';
+          t.style.marginRight = '0px';
+          t.style.borderRadius = '0px';
+          t.style.overflow = '';
+        });
+        return;
+      }
+
+      targets.forEach(function (t) {
+        t.style.overflow = 'hidden';
+      });
 
       var vh = window.innerHeight;
       var maxInset = Math.max(16, Math.min(window.innerWidth * 0.03, 48));
