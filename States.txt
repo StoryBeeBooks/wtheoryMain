@@ -1,0 +1,174 @@
+================================================================================
+  STATES.TXT — West Solution Consulting Corp. Project Status
+  Last Updated: April 16, 2026
+================================================================================
+
+──────────────────────────────────────────────────────────────────────────────
+ 1. ABOUT THE COMPANY
+──────────────────────────────────────────────────────────────────────────────
+
+West Solution Consulting Corp. (brand: wtheory) is a Canadian company that
+builds digital infrastructure for small and medium enterprises. The mission:
+transform ambitious SMEs into market leaders through strategic intelligence,
+purpose-built digital tools, and targeted ecosystems.
+
+Core verticals:
+  • Meeting Intelligence  — Waymark (iPadOS app)
+  • Market Expansion      — Access Canada (web platform, planned)
+  • Local Customer Acq.   — Signet (iOS app, planned)
+  • Digital Presence       — sites.wtheory.com (web development services)
+  • Global Intelligence    — Open-source infrastructure data directory
+
+Company email: support@wtheory.com
+Domain: wtheory.com
+Assets CDN: assets.wtheory.com
+
+──────────────────────────────────────────────────────────────────────────────
+ 2. WHAT WE DID FOR THE SITE (Completed Work)
+──────────────────────────────────────────────────────────────────────────────
+
+MAIN SITE (wtheory.com)
+  • Built the main landing page with story-driven sections (Problem,
+    Meeting Intelligence, Market Expansion, Local Acquisition)
+  • Created solution banners linking to Waymark, Access Canada, Signet,
+    and sites.wtheory.com
+  • Added Intelligence Layer section linking to Global Intelligence
+  • Changed Intelligence Layer section from dark to light mode
+  • Built shared header (nav + mobile hamburger) and footer components
+  • Created combined /policies page with tabbed UI (Privacy, Terms,
+    Cookies, Accessibility, Disclaimer)
+  • Deleted standalone legal pages from footer; consolidated into Policies
+  • Deleted /web-development page; linked to external sites.wtheory.com
+  • Created Chinese version of main landing page (/zh)
+
+WAYMARK PAGE (/waymark)
+  • Full product marketing page: Hero, Features Grid, 6 Feature Deep-Dives,
+    Dashboard Themes, How It Works (4 steps), Use Cases (6 scenarios),
+    Languages, Security & Privacy, Pricing, Credits Explanation, FAQ
+  • Real product videos and screenshots from assets.wtheory.com
+  • Pricing: Transcription ($2.99/60min), Translation ($3.99/60min),
+    Intelligence Summary ($7.99/100 reports). No subscriptions.
+  • Free vs Paid comparison table
+  • Apple Pencil banner with PencilKit callout
+  • Privacy Policy (/waymark-privacy-policy) and Terms of Service
+    (/waymark-terms-of-service) and Support (/waymark-support) pages
+  • Added "Translate" to hero title: "Record. Transcribe. Translate. Analyze."
+  • Removed "Why Professionals Choose Waymark" trust bar section
+
+WAYMARK CHINESE (/waymark-zh)
+  • Full native Chinese translation (not a direct translation from English)
+  • All feature descriptions, use cases, pricing, FAQ rewritten idiomatically
+  • Language switcher linking back to /waymark
+
+GLOBAL INTELLIGENCE (/global-intelligence)
+  • Directory page showcasing open-source infrastructure data categories
+  • Chinese version (/global-intelligence-zh) with native localization
+
+ACCESS CANADA (/access-canada)
+  • Market expansion landing page
+  • Privacy, Terms, Support pages
+
+SIGNET (/signet)
+  • Local acquisition product page
+  • Privacy, Terms, Support pages
+
+FAQ (/faq)
+  • Company FAQ page
+
+MOBILE FIXES (April 2026)
+  • Fixed button text overflow on mobile (white-space: nowrap, font-size: 14px)
+  • Fixed hamburger menu not closing on outside click
+  • Disabled section inset scroll effect on mobile (< 768px) to prevent
+    text overlap from margin/border-radius transforms
+  • Repositioned language switch button below hamburger on mobile
+    (top: 72px, right: 16px)
+  • Fixed Waymark trust badges from flex-stretched columns to natural
+    center-justified bubbles
+
+CSS & JS
+  • /css/style.css — Shared stylesheet, responsive breakpoints at 768px
+  • /js/layout.js — Shared layout script, section inset effect,
+    header/footer injection, isMobile() guard for scroll effects
+
+──────────────────────────────────────────────────────────────────────────────
+ 3. CURRENT APP DEVELOPMENT STATUS
+──────────────────────────────────────────────────────────────────────────────
+
+WAYMARK (iPadOS)
+  • Status: LIVE on App Store (id6760979716)
+  • Platform: iPadOS 17.0+
+  • Features: Live transcription (15 languages), real-time translation
+    (13 languages), AI Intelligence Consultant, rich notes with Apple Pencil,
+    inline camera capture, PDF export
+  • Pricing: Pay-as-you-go credit packs (no subscription)
+  • Privacy: 100% on-device storage, no audio recording, no third-party SDKs
+  • Auth: Sign in with Apple
+
+ACCESS CANADA
+  • Status: PLANNED (landing page exists, product not yet built)
+  • Concept: Platform for international firms entering Canadian market —
+    procurement opportunities, tax guidance, investor connections
+
+SIGNET
+  • Status: PLANNED (landing page exists, product not yet built)
+  • Concept: Free-sampling marketplace connecting local businesses with
+    nearby consumers. Zero ad spend model.
+
+──────────────────────────────────────────────────────────────────────────────
+ 4. WHAT NEEDS TO BE DONE NEXT (Planning)
+──────────────────────────────────────────────────────────────────────────────
+
+HIGH PRIORITY
+  • Create Chinese versions of Access Canada and Signet pages
+  • Create Chinese version of FAQ page
+  • Review all Chinese pages on mobile viewport for layout issues
+  • Add lang-switch links consistently across all Chinese ↔ English page pairs
+
+MEDIUM PRIORITY
+  • SEO optimization pass (meta tags, Open Graph, structured data)
+  • Add og:image and Twitter card meta to all pages
+  • Performance audit (image optimization, lazy loading consistency)
+  • Consider adding Korean (한국어) versions of key pages
+  • Add sitemap.xml and robots.txt
+
+LOW PRIORITY / FUTURE
+  • Build out Access Canada product/platform
+  • Build out Signet iOS app
+  • Add analytics (privacy-respecting, no third-party trackers)
+  • Consider blog/content section for SEO organic traffic
+  • Explore Waymark feature parity on iPhone (currently iPad-only)
+
+──────────────────────────────────────────────────────────────────────────────
+ 5. IMPORTANT NOTES
+──────────────────────────────────────────────────────────────────────────────
+
+REPO & DEPLOYMENT
+  • GitHub: StoryBeeBooks/wtheoryMain (main branch)
+  • Hosting: Assumed Cloudflare Pages or similar static hosting
+  • Directory-based clean URLs (e.g., /waymark/index.html → /waymark)
+
+ARCHITECTURE
+  • Pure HTML/CSS/JS — no frameworks, no build step
+  • Shared components loaded via layout.js (header.html, footer.html)
+  • Assets hosted on assets.wtheory.com CDN
+  • Responsive design via @media (max-width: 768px) breakpoints
+
+LEGAL
+  • Company: West Solution Consulting Corp.
+  • Country: Canada
+  • All apps have dedicated Privacy Policy + Terms of Service pages
+  • Accuracy disclaimers added to Waymark use cases and terms
+  • Waymark: no audio stored, no third-party SDKs, Sign in with Apple
+
+PRICING (Waymark)
+  • Transcription pack: $2.99 USD / 60 minutes (1-month expiry)
+  • Translation pack: $3.99 USD / 60 minutes (1-month expiry)
+  • Intelligence Summary pack: $7.99 USD / 100 reports (stackable)
+  • Free tier: 10 min transcription, 5 min translation, 2 AI reports,
+    watermarked PDF, 50 session cap
+  • Paid: full access, no watermark, 350 session cap
+  • FIFO credit consumption, account-bound (not device-bound)
+
+================================================================================
+  END OF FILE — Update this file after completing major milestones.
+================================================================================
