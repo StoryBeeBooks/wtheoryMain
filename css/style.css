@@ -401,8 +401,8 @@ button { cursor: pointer; font-family: inherit; border: none; }
   .section { padding: 64px 0; }
   .hero { padding: 100px 0 0; }
   .stats-bar { padding: 100px 0 32px; }
-  .btn--lg { padding: 14px 28px; font-size: 16px; }
-  .btn { white-space: normal; text-align: center; }
+  .btn--lg { padding: 14px 28px; font-size: 15px; }
+  .btn { white-space: nowrap; font-size: 14px; }
   .placeholder-hero { padding: 140px 0 80px; }
   .gi-hero { padding: 120px 0 60px; }
   .legal { padding: 100px 0 60px; }
@@ -1388,7 +1388,9 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
 @media (max-width: 768px) {
   .lang-switch {
-    position: static;
-    margin: 16px auto 0;
+    top: 72px;
+    right: 16px;
+    padding: 6px 14px;
+    font-size: 13px;
   }
 }
