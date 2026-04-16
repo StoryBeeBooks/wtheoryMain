@@ -7,6 +7,14 @@
 
   var base = document.documentElement.getAttribute('data-base') || '';
 
+  // Detect Chinese pages by lang attribute or URL path
+  var isZh = document.documentElement.lang === 'zh-CN'
+          || document.documentElement.lang === 'zh-Hans'
+          || /\/(zh|waymark-zh|global-intelligence-zh)(\/|$)/.test(window.location.pathname);
+
+  var headerFile = isZh ? '/components/header-zh.html' : '/components/header.html';
+  var footerFile = isZh ? '/components/footer-zh.html' : '/components/footer.html';
+
   function inject(el, path) {
     if (!el) return Promise.resolve();
     return fetch(base + path)
@@ -15,8 +23,8 @@
   }
 
   Promise.all([
-    inject(header, '/components/header.html'),
-    inject(footer, '/components/footer.html')
+    inject(header, headerFile),
+    inject(footer, footerFile)
   ]).then(function () {
     // Highlight active nav link
     var path = window.location.pathname;
