@@ -1024,7 +1024,6 @@ button { cursor: pointer; font-family: inherit; border: none; }
 .pricing-paid__subtitle {
   font-size: 15px;
   color: var(--color-text-secondary);
-  max-width: 460px;
 }
 
 .pricing-packs {
@@ -2137,6 +2136,11 @@ button { cursor: pointer; font-family: inherit; border: none; }
         <p class="pricing-free__title">Free</p>
         <p class="pricing-free__tier">Starter</p>
         <p class="pricing-free__price">$0</p>
+        <ul class="pricing-pack__features" style="margin-bottom: 24px;">
+          <li>10 min live transcription</li>
+          <li>5 min real-time translation</li>
+          <li>2 Intelligence summaries</li>
+        </ul>
         <p class="pricing-free__note">Explore all features with free starter credits on every new account.</p>
         <a href="http://apps.apple.com/app/id6760979716" class="btn btn--primary" style="text-align: center;">Download the App</a>
       </div>
@@ -2202,57 +2206,7 @@ button { cursor: pointer; font-family: inherit; border: none; }
 
     </div>
 
-    <!-- Free vs Purchased comparison -->
-    <div class="comparison">
-      <h3 class="heading-sm" style="text-align: center; margin-bottom: 24px;">Free vs. Purchased Account</h3>
-      <table class="comparison__table">
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Free</th>
-            <th>Purchased</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Live transcription</td>
-            <td>10 minutes</td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>Real-time translation</td>
-            <td>5 minutes</td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>Intelligence summaries</td>
-            <td>2 reports</td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>Rich notes &amp; camera</td>
-            <td><span class="check">✓</span></td>
-            <td><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td>PDF export</td>
-            <td>Watermarked</td>
-            <td>Clean (no watermark)</td>
-          </tr>
-          <tr>
-            <td>Lifetime session cap</td>
-            <td>50 sessions</td>
-            <td>350 sessions</td>
-          </tr>
-          <tr>
-            <td>Credit packs</td>
-            <td><span class="cross">—</span></td>
-            <td>Buy anytime, stack freely</td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="text-sm" style="text-align: center; margin-top: 16px;">All purchases are processed securely through the App Store. Prices shown in USD; your local currency may differ.</p>
-    </div>
+    <p class="text-sm" style="text-align: center; margin-top: 32px;">All purchases are processed securely through the App Store. Prices shown in USD; your local currency may differ.</p>
   </div>
 </section>
 
