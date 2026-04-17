@@ -941,139 +941,167 @@ button { cursor: pointer; font-family: inherit; border: none; }
 /* ============================================================
    PRICING
    ============================================================ */
-.pricing-intro {
-  max-width: 680px;
-  margin: 0 auto 56px;
-  text-align: center;
-}
-
-.pricing-highlight {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  background: linear-gradient(135deg, #E3F9ED 0%, #E8F1FC 100%);
-  border-radius: 980px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 24px;
-  border: 1px solid var(--color-border-light);
-}
-
-.pricing-grid {
+.pricing-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 960px;
-  margin: 0 auto;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
+  align-items: stretch;
 }
 
-.pricing-card {
+/* Left: Free panel */
+.pricing-free {
   background: var(--color-surface);
   border: 1.5px solid var(--color-border-light);
   border-radius: var(--radius-2xl);
-  padding: 36px 32px;
-  text-align: center;
-  transition: all var(--transition-smooth);
-  position: relative;
-}
-
-.pricing-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.pricing-card--featured {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-md);
-}
-
-.pricing-card__badge {
-  position: absolute;
-  top: -13px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 4px 16px;
-  background: var(--color-accent-gradient);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 980px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-.pricing-card__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-lg);
-  margin: 0 auto 20px;
+  padding: 36px 28px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
+  flex-direction: column;
 }
 
-.pricing-card__icon--blue { background: #E3F0FF; }
-.pricing-card__icon--green { background: #E3F9ED; }
-.pricing-card__icon--purple { background: #F0E5FC; }
-
-.pricing-card__name {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: var(--color-text);
-}
-
-.pricing-card__amount {
-  font-size: 15px;
-  color: var(--color-text-secondary);
-  margin-bottom: 20px;
-}
-
-.pricing-card__price {
+.pricing-free__title {
   font-size: 36px;
   font-weight: 700;
   color: var(--color-text);
-  letter-spacing: -0.02em;
+  margin-bottom: 16px;
 }
 
-.pricing-card__price-note {
-  font-size: 13px;
+.pricing-free__tier {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text-tertiary);
-  margin-top: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 4px;
 }
 
-.pricing-card__features {
-  list-style: none;
-  text-align: left;
-  margin-bottom: 28px;
+.pricing-free__price {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 12px;
 }
 
-.pricing-card__features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+.pricing-free__note {
   font-size: 14px;
   color: var(--color-text-secondary);
-  padding: 6px 0;
+  line-height: 1.5;
+  margin-bottom: 32px;
+  flex: 1;
 }
 
-.pricing-card__features li::before {
+/* Right: Paid panel */
+.pricing-paid {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-2xl);
+  padding: 36px 40px;
+}
+
+.pricing-paid__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pricing-paid__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.pricing-paid__subtitle {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  max-width: 460px;
+}
+
+.pricing-packs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pricing-pack {
+  position: relative;
+}
+
+.pricing-pack__inner {
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.pricing-pack__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.pricing-pack__amount {
+  font-size: 13px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 16px;
+}
+
+.pricing-pack__price {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.pricing-pack__price-note {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 16px;
+}
+
+.pricing-pack__features {
+  list-style: none;
+}
+
+.pricing-pack__features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  padding: 4px 0;
+  line-height: 1.4;
+}
+
+.pricing-pack__features li::before {
   content: '✓';
   color: var(--color-success);
   font-weight: 700;
-  font-size: 14px;
-  min-width: 18px;
+  font-size: 13px;
+  min-width: 16px;
+  margin-top: 1px;
 }
 
-@media (max-width: 800px) {
-  .pricing-grid {
+@media (max-width: 860px) {
+  .pricing-layout {
     grid-template-columns: 1fr;
-    max-width: 400px;
+  }
+  .pricing-packs {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 861px) and (max-width: 1040px) {
+  .pricing-layout {
+    grid-template-columns: 220px 1fr;
+  }
+  .pricing-pack__price {
+    font-size: 26px;
   }
 }
 
@@ -1910,52 +1938,76 @@ button { cursor: pointer; font-family: inherit; border: none; }
       <p class="text-lg">在订阅制席卷全球的当下，Waymark 坚持古典互联网最朴素的商业底色：明码标价，用时充值，绝无暗门自动扣费。</p>
     </div>
 
-    <div class="pricing-intro">
-      <div class="pricing-highlight">
-        注册即赠首发迎新算力大礼包，无缝测试核心功能
-      </div>
-    </div>
+    <div class="pricing-layout">
 
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <h3 class="pricing-card__name">转录</h3>
-        <p class="pricing-card__amount">60 分钟</p>
-        <div class="pricing-card__price">$2.99</div>
-        <p class="pricing-card__price-note">一次性购买 · 美元</p>
-        <ul class="pricing-card__features">
-          <li>60 分钟实时语音转文字</li>
-          <li>15 种转录语言</li>
-          <li>购买后 1 个月内有效</li>
-          <li>随时叠加多个充值包</li>
-        </ul>
+      <!-- Left: Free plan -->
+      <div class="pricing-free">
+        <p class="pricing-free__title">免费</p>
+        <p class="pricing-free__tier">入门版</p>
+        <p class="pricing-free__price">$0</p>
+        <p class="pricing-free__note">新用户注册即赠入门算力大礼包，无缝探索全部核心功能。</p>
+        <a href="http://apps.apple.com/app/id6760979716" class="btn btn--primary" style="text-align: center;">下载应用</a>
       </div>
 
-      <div class="pricing-card pricing-card--featured">
-        <div class="pricing-card__badge">最受欢迎</div>
-        <h3 class="pricing-card__name">翻译</h3>
-        <p class="pricing-card__amount">60 分钟</p>
-        <div class="pricing-card__price">$3.99</div>
-        <p class="pricing-card__price-note">一次性购买 · 美元</p>
-        <ul class="pricing-card__features">
-          <li>60 分钟实时翻译</li>
-          <li>13 种翻译语言</li>
-          <li>基于句子的精准翻译</li>
-          <li>购买后 1 个月内有效</li>
-        </ul>
+      <!-- Right: Credit packs -->
+      <div class="pricing-paid">
+        <div class="pricing-paid__header">
+          <div>
+            <p class="pricing-paid__title">算力充值包</p>
+            <p class="pricing-paid__subtitle">一次性购买，按需充值，绝无订阅。</p>
+          </div>
+        </div>
+
+        <div class="pricing-packs">
+
+          <div class="pricing-pack">
+            <div class="pricing-pack__inner">
+              <p class="pricing-pack__name">转录</p>
+              <p class="pricing-pack__amount">60 分钟</p>
+              <p class="pricing-pack__price">$2.99</p>
+              <p class="pricing-pack__price-note">一次性购买 · 美元</p>
+              <ul class="pricing-pack__features">
+                <li>60 分钟实时语音转文字</li>
+                <li>15 种转录语言</li>
+                <li>购买后 1 个月内有效</li>
+                <li>随时叠加多个充值包</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-pack">
+            <div class="pricing-pack__inner">
+              <p class="pricing-pack__name">翻译</p>
+              <p class="pricing-pack__amount">60 分钟</p>
+              <p class="pricing-pack__price">$3.99</p>
+              <p class="pricing-pack__price-note">一次性购买 · 美元</p>
+              <ul class="pricing-pack__features">
+                <li>60 分钟实时翻译</li>
+                <li>13 种翻译语言</li>
+                <li>基于句子的精准翻译</li>
+                <li>购买后 1 个月内有效</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-pack">
+            <div class="pricing-pack__inner">
+              <p class="pricing-pack__name">智能摘要</p>
+              <p class="pricing-pack__amount">100 份报告</p>
+              <p class="pricing-pack__price">$7.99</p>
+              <p class="pricing-pack__price-note">一次性购买 · 美元</p>
+              <ul class="pricing-pack__features">
+                <li>100 次智能顾问分析</li>
+                <li>多模态（文字 + 照片）</li>
+                <li>选择报告语言</li>
+                <li>随时叠加多个充值包</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      <div class="pricing-card">
-        <h3 class="pricing-card__name">智能摘要</h3>
-        <p class="pricing-card__amount">100 份报告</p>
-        <div class="pricing-card__price">$7.99</div>
-        <p class="pricing-card__price-note">一次性购买 · 美元</p>
-        <ul class="pricing-card__features">
-          <li>100 次智能顾问分析</li>
-          <li>多模态（文字 + 照片）</li>
-          <li>选择报告语言</li>
-          <li>随时叠加多个充值包</li>
-        </ul>
-      </div>
     </div>
 
     <!-- Free vs Purchased comparison -->
