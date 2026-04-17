@@ -10,7 +10,7 @@
   // Detect Chinese pages by lang attribute or URL path
   var isZh = document.documentElement.lang === 'zh-CN'
           || document.documentElement.lang === 'zh-Hans'
-          || /\/(zh|waymark-zh|global-intelligence-zh)(\/|$)/.test(window.location.pathname);
+          || /\/(zh|waymark-zh|infrastructure-intelligence-zh|global-intelligence-zh)(\/|$)/.test(window.location.pathname);
 
   var headerFile = isZh ? '/components/header-zh.html' : '/components/header.html';
   var footerFile = isZh ? '/components/footer-zh.html' : '/components/footer.html';
