@@ -941,63 +941,113 @@ button { cursor: pointer; font-family: inherit; border: none; }
 /* ============================================================
    PRICING
    ============================================================ */
-.pricing-intro {
-  max-width: 680px;
-  margin: 0 auto 56px;
-  text-align: center;
-}
-
-.pricing-highlight {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  background: linear-gradient(135deg, #E3F9ED 0%, #E8F1FC 100%);
-  border-radius: 980px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 24px;
-  border: 1px solid var(--color-border-light);
-}
-
-.pricing-grid {
+.pricing-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 260px 1fr;
+  gap: 20px;
   max-width: 960px;
   margin: 0 auto;
+  align-items: stretch;
 }
 
-.pricing-card {
+/* Left: Free panel */
+.pricing-free {
   background: var(--color-surface);
   border: 1.5px solid var(--color-border-light);
   border-radius: var(--radius-2xl);
-  padding: 36px 32px;
-  text-align: center;
-  transition: all var(--transition-smooth);
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-free__title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 16px;
+}
+
+.pricing-free__desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  margin-bottom: 28px;
+}
+
+.pricing-free__tier {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 4px;
+}
+
+.pricing-free__price {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.pricing-free__note {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-bottom: 32px;
+  flex: 1;
+}
+
+/* Right: Paid panel */
+.pricing-paid {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-2xl);
+  padding: 36px 40px;
+}
+
+.pricing-paid__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.pricing-paid__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.pricing-paid__subtitle {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  max-width: 460px;
+}
+
+.pricing-packs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.pricing-pack {
   position: relative;
 }
 
-.pricing-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.pricing-card--featured {
-  border-color: var(--color-accent);
-  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-md);
-}
-
-.pricing-card__badge {
+.pricing-pack__badge {
   position: absolute;
-  top: -13px;
+  top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 4px 16px;
+  padding: 3px 12px;
   background: var(--color-accent-gradient);
   color: #fff;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   border-radius: 980px;
   letter-spacing: 0.04em;
@@ -1005,75 +1055,83 @@ button { cursor: pointer; font-family: inherit; border: none; }
   white-space: nowrap;
 }
 
-.pricing-card__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-lg);
-  margin: 0 auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
+.pricing-pack__inner {
+  border: 1.5px solid var(--color-border-light);
+  border-radius: var(--radius-xl);
+  padding: 24px 20px;
+  height: 100%;
+  box-sizing: border-box;
 }
 
-.pricing-card__icon--blue { background: #E3F0FF; }
-.pricing-card__icon--green { background: #E3F9ED; }
-.pricing-card__icon--purple { background: #F0E5FC; }
-
-.pricing-card__name {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 4px;
-  color: var(--color-text);
+.pricing-pack--featured .pricing-pack__inner {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent);
 }
 
-.pricing-card__amount {
+.pricing-pack__name {
   font-size: 15px;
-  color: var(--color-text-secondary);
-  margin-bottom: 20px;
-}
-
-.pricing-card__price {
-  font-size: 36px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-text);
-  letter-spacing: -0.02em;
+  margin-bottom: 4px;
 }
 
-.pricing-card__price-note {
+.pricing-pack__amount {
   font-size: 13px;
   color: var(--color-text-tertiary);
-  margin-top: 4px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
-.pricing-card__features {
+.pricing-pack__price {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.pricing-pack__price-note {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 16px;
+}
+
+.pricing-pack__features {
   list-style: none;
-  text-align: left;
-  margin-bottom: 28px;
 }
 
-.pricing-card__features li {
+.pricing-pack__features li {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 13px;
   color: var(--color-text-secondary);
-  padding: 6px 0;
+  padding: 4px 0;
+  line-height: 1.4;
 }
 
-.pricing-card__features li::before {
+.pricing-pack__features li::before {
   content: '✓';
   color: var(--color-success);
   font-weight: 700;
-  font-size: 14px;
-  min-width: 18px;
+  font-size: 13px;
+  min-width: 16px;
+  margin-top: 1px;
 }
 
-@media (max-width: 800px) {
-  .pricing-grid {
+@media (max-width: 860px) {
+  .pricing-layout {
     grid-template-columns: 1fr;
-    max-width: 400px;
+  }
+  .pricing-packs {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 861px) and (max-width: 1040px) {
+  .pricing-layout {
+    grid-template-columns: 220px 1fr;
+  }
+  .pricing-pack__price {
+    font-size: 26px;
   }
 }
 
@@ -2074,55 +2132,78 @@ button { cursor: pointer; font-family: inherit; border: none; }
       <p class="text-lg">Start with free credits on signup, then purchase top-up packs only when you need them. No recurring charges, no auto-renewals, no commitments.</p>
     </div>
 
-    <div class="pricing-intro">
-      <div class="pricing-highlight">
-        Every new account gets free transcription, translation, and AI credits
-      </div>
-    </div>
+    <div class="pricing-layout">
 
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        
-        <h3 class="pricing-card__name">Transcription</h3>
-        <p class="pricing-card__amount">60 minutes</p>
-        <div class="pricing-card__price">$2.99</div>
-        <p class="pricing-card__price-note">One-time purchase · USD</p>
-        <ul class="pricing-card__features">
-          <li>60 minutes of live speech-to-text</li>
-          <li>15 transcription languages</li>
-          <li>Valid for 1 month after purchase</li>
-          <li>Stack multiple packs anytime</li>
-        </ul>
+      <!-- Left: Free plan -->
+      <div class="pricing-free">
+        <p class="pricing-free__title">Free</p>
+        <p class="pricing-free__desc">Start exploring. A complete experience for occasional use.</p>
+        <p class="pricing-free__tier">Starter</p>
+        <p class="pricing-free__price">$0</p>
+        <p class="pricing-free__note">Explore all features with free starter credits on every new account.</p>
+        <a href="http://apps.apple.com/app/id6760979716" class="btn btn--primary" style="text-align: center;">Download the App</a>
       </div>
 
-      <div class="pricing-card pricing-card--featured">
-        <div class="pricing-card__badge">Most Popular</div>
-        
-        <h3 class="pricing-card__name">Translation</h3>
-        <p class="pricing-card__amount">60 minutes</p>
-        <div class="pricing-card__price">$3.99</div>
-        <p class="pricing-card__price-note">One-time purchase · USD</p>
-        <ul class="pricing-card__features">
-          <li>60 minutes of real-time translation</li>
-          <li>13 translation languages</li>
-          <li>Sentence-aware accuracy</li>
-          <li>Valid for 1 month after purchase</li>
-        </ul>
+      <!-- Right: Credit packs -->
+      <div class="pricing-paid">
+        <div class="pricing-paid__header">
+          <div>
+            <p class="pricing-paid__title">Credit Packs</p>
+            <p class="pricing-paid__subtitle">One-time purchases. No subscriptions. Buy in-app when you need more.</p>
+          </div>
+        </div>
+
+        <div class="pricing-packs">
+
+          <div class="pricing-pack">
+            <div class="pricing-pack__inner">
+              <p class="pricing-pack__name">Transcription</p>
+              <p class="pricing-pack__amount">60 minutes</p>
+              <p class="pricing-pack__price">$2.99</p>
+              <p class="pricing-pack__price-note">One-time purchase · USD</p>
+              <ul class="pricing-pack__features">
+                <li>60 minutes of live speech-to-text</li>
+                <li>15 transcription languages</li>
+                <li>Valid for 1 month after purchase</li>
+                <li>Stack multiple packs anytime</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-pack pricing-pack--featured">
+            <div class="pricing-pack__badge">Most Popular</div>
+            <div class="pricing-pack__inner">
+              <p class="pricing-pack__name">Translation</p>
+              <p class="pricing-pack__amount">60 minutes</p>
+              <p class="pricing-pack__price">$3.99</p>
+              <p class="pricing-pack__price-note">One-time purchase · USD</p>
+              <ul class="pricing-pack__features">
+                <li>60 minutes of real-time translation</li>
+                <li>13 translation languages</li>
+                <li>Sentence-aware accuracy</li>
+                <li>Valid for 1 month after purchase</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="pricing-pack">
+            <div class="pricing-pack__inner">
+              <p class="pricing-pack__name">Intelligence Summary</p>
+              <p class="pricing-pack__amount">100 reports</p>
+              <p class="pricing-pack__price">$7.99</p>
+              <p class="pricing-pack__price-note">One-time purchase · USD</p>
+              <ul class="pricing-pack__features">
+                <li>100 Intelligence analyses</li>
+                <li>Multimodal (text + photos)</li>
+                <li>Choose report language</li>
+                <li>Stack multiple packs anytime</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      <div class="pricing-card">
-        
-        <h3 class="pricing-card__name">Intelligence Summary</h3>
-        <p class="pricing-card__amount">100 reports</p>
-        <div class="pricing-card__price">$7.99</div>
-        <p class="pricing-card__price-note">One-time purchase · USD</p>
-        <ul class="pricing-card__features">
-          <li>100 Intelligence Consultant analyses</li>
-          <li>Multimodal (text + photos)</li>
-          <li>Choose report language</li>
-          <li>Stack multiple packs anytime</li>
-        </ul>
-      </div>
     </div>
 
     <!-- Free vs Purchased comparison -->
