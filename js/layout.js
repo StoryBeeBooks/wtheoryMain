@@ -138,3 +138,92 @@
 
   window.initSectionInset = initSectionInset;
 })();
+
+/* ── Cookie Consent Bar ──
+   Displayed on every page until the visitor makes a choice.
+   Choice is stored in localStorage; re-shown if the policy
+   version changes or after 1 year. */
+(function () {
+  'use strict';
+
+  // Match the Effective Date of the Cookies Policy
+  var POLICY_VERSION = '2026-04-15';
+  var STORAGE_KEY    = 'wsc_cookie_consent';
+  var ONE_YEAR_MS    = 365 * 24 * 60 * 60 * 1000;
+
+  function shouldShow() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return true;
+      var stored = JSON.parse(raw);
+      if (stored.v !== POLICY_VERSION) return true;
+      if (Date.now() - new Date(stored.date).getTime() > ONE_YEAR_MS) return true;
+      return false;
+    } catch (e) {
+      return true;
+    }
+  }
+
+  function saveChoice(choice) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        v:      POLICY_VERSION,
+        choice: choice,
+        date:   new Date().toISOString()
+      }));
+    } catch (e) {}
+  }
+
+  function dismiss(bar, choice) {
+    saveChoice(choice);
+    bar.classList.remove('cookie-bar--visible');
+    bar.classList.add('cookie-bar--hidden');
+    setTimeout(function () {
+      if (bar.parentNode) bar.parentNode.removeChild(bar);
+    }, 350);
+  }
+
+  function init() {
+    if (!shouldShow()) return;
+
+    var bar = document.createElement('div');
+    bar.className = 'cookie-bar';
+    bar.setAttribute('role', 'region');
+    bar.setAttribute('aria-label', 'Cookie consent');
+    bar.innerHTML =
+      '<div class="cookie-bar__inner">' +
+        '<p class="cookie-bar__text">' +
+          'We use cookies to understand how our site is used. By clicking ' +
+          '<strong>Accept All</strong>, you consent to our use of analytics cookies ' +
+          'in accordance with our <a href="/cookies-policy" class="cookie-bar__link">Cookies Policy</a>. ' +
+          'Strictly necessary cookies are always active.' +
+        '</p>' +
+        '<div class="cookie-bar__actions">' +
+          '<button class="cookie-bar__btn cookie-bar__btn--secondary" id="wsc-cookie-necessary">Necessary Only</button>' +
+          '<button class="cookie-bar__btn cookie-bar__btn--primary"   id="wsc-cookie-accept">Accept All</button>' +
+        '</div>' +
+      '</div>';
+
+    document.body.appendChild(bar);
+
+    // Trigger slide-up animation after insertion
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        bar.classList.add('cookie-bar--visible');
+      });
+    });
+
+    document.getElementById('wsc-cookie-accept').addEventListener('click', function () {
+      dismiss(bar, 'all');
+    });
+    document.getElementById('wsc-cookie-necessary').addEventListener('click', function () {
+      dismiss(bar, 'necessary');
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
